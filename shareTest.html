@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<pre id="log">Log:</pre>
+<script>
+    var worker = new SharedWorker('js/sharedworkerTest.js');
+    var log = document.getElementById('log');
+    worker.port.addEventListener('message', function(e) {
+        log.textContent += '\n' + e.data;
+    }, false);
+    worker.port.start();
+    worker.port.postMessage('ping');
+</script>
+<iframe src=shareOther.html></iframe>
+</body>
+</html>

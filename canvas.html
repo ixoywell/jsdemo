@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas</title>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script>
+    var c=document.getElementById("canvas");
+    var ctx=c.getContext("2d"); //返回一个用于在画布上绘图的环境
+    //var gl = c.getContext("webgl");
+    ctx.fillStyle="#0000ff";
+    ctx.fillRect(20,20,150,100);
+    ctx.fillStyle="#FF0000";
+    ctx.beginPath();
+    ctx.arc(200,50,30,0,Math.PI*2,true);
+    ctx.closePath();
+    ctx.fill();
+
+</script>
+
+</body>
+</html>

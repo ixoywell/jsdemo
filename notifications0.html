@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>HTML5 Notification API Demo</title>
+    <style>
+        body{
+            font-family: 'Lato', sans-serif;
+            color:#444;
+            font-size:1.6em;
+            background:url('../images/bg-body.gif');
+        }
+        .ad_container{
+            margin-bottom:20px;
+            height:100px;
+            position: absolute;
+            right:0;
+        }
+        .container{
+            width:90%;
+            margin:30px auto;
+            padding:25px;
+            min-height:400px;
+            height:auto;
+        }
+        .inner_container{ float:left; width:100%; clear:both; background:#fff; }
+
+        .aligncenter{
+            width:80%;
+            margin:20px auto;
+            text-align: center;
+        }
+        .half
+        {
+            width:40%;
+            float:left;
+            display:inline-block;
+        }
+
+        /**
+        * Messages
+        */
+        .hidden
+        {
+            display:none;
+        }
+
+        /**
+        * Permission button
+        */
+        input[type=button]
+        {
+            padding:1.8em;
+            background:#eee;
+            border:1px solid #555;
+            width:300px;
+        }
+        input[type=button]:hover
+        {
+            background: #f5f5f5;
+            cursor: pointer;
+        }
+
+        input[type=text]
+        {
+            padding:1em;
+            border:1px solid #555;
+            width:200px;
+        }
+
+        /**
+        * Alert Boxes
+        */
+        .alert {
+            padding: 8px 35px 8px 14px;
+            margin-bottom: 18px;
+            color: #c09853;
+            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+            background-color: #fcf8e3;
+            border: 1px solid #fbeed5;
+            border-radius: 4px;
+        }
+
+        .alert-heading { color: inherit; }
+        .alert .close { position: relative; top: -2px; right: -21px; line-height: 18px; }
+        .alert-success { color: #468847; background-color: #dff0d8; border-color: #d6e9c6; }
+        .alert-danger,
+        .alert-error { color: #b94a48; background-color: #f2dede; border-color: #eed3d7; }
+        .alert-info { color: #3a87ad; background-color: #d9edf7; border-color: #bce8f1; }
+        .alert-block { padding-top: 14px; padding-bottom: 14px; }
+        .alert-block > p,
+        .alert-block > ul { margin-bottom: 0; }
+        .alert-block p + p { margin-top: 5px; }
+    </style>
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script>
+        /**
+         * Demo for HTML5 Notification API
+         * @author Paul
+         */
+        (function($) {
+
+            $(document).ready(function() {
+                init_document();
+            });
+
+            /**
+             * Init document
+             */
+            function init_document()
+            {
+                // Check browser support
+                check_browser_support();
+
+                // Request permission
+                $('#ask_permission').on("click", request_permission);
+
+                // Check if we have permission
+              //  check_permission();
+
+                // Plain text notification demo
+                $('#text_button').on("click", function(){
+                    var notification = plain_text_notification( $("#title").val(), $("#icon").val(), $("#text").val() );
+                    //notification.show();
+                });
+
+                // HTML notification demo
+                $('#html_button').on("click", function(){
+                    var notification = html_notification( $("#url").val() );
+                    //notification.show();
+                });
+            }
+
+            /**
+             * Check browser support and display message if not supported
+             */
+            function check_browser_support()
+            {
+                if (!("Notification" in window)) {
+                    $('#message').removeClass()
+                            .addClass("alert alert-error")
+                            .text("Your browser does not support the Notification API please use Chrome for the demo.");
+
+                    $('#notification_demo').hide();
+                } else {
+                    $('#message').removeClass()
+                            .addClass("alert alert-success")
+                            .text("Your browser does support the Notification API.");
+                }
+            }
+
+            /**
+             * Check if the browser supports notifications
+             *
+             * @return true if browser does support notifications
+             */
+            function browser_support_notification()
+            {
+                if (window.webkitNotifications) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+
+            /**
+             * Request notification permissions
+             */
+            function request_permission()
+            {
+                // 0 means we have permission to display notifications
+//                if (window.webkitNotifications.checkPermission() != 0) {
+//                    window.webkitNotifications.requestPermission(check_permission);
+//                }
+                Notification.requestPermission().then(function(result) {
+                    if (result === 'denied') {
+                        console.log('Permission wasn\'t granted. Allow a retry.');
+                        $('#message').removeClass()
+                                .addClass("alert alert-error")
+                                .text("You have denied access to display notifications.");
+                        $('.half').addClass('hidden');
+                        return;
+                    }
+                    if (result === 'default') {
+                        console.log('The permission request was dismissed.');
+                        // Fail
+                        $('#ask_permission').fadeIn();
+                        $('.half').addClass('hidden');
+                        return;
+                    }
+
+                    $('#ask_permission').addClass('hidden');
+                    $('.half').removeClass('hidden');
+                    // Do something with the granted permission.
+                });
+            }
+
+            /**
+             * Checks to see if notification has permission
+             */
+            function check_permission()
+            {
+                switch(window.Notifications.checkPermission()) {
+                    case 0:
+                        // Continue
+                        $('#ask_permission').addClass('hidden');
+                        $('.half').removeClass('hidden');
+                        return true;
+                        break;
+
+                    case 2:
+                        $('#message').removeClass()
+                                .addClass("alert alert-error")
+                                .text("You have denied access to display notifications.");
+                        $('.half').addClass('hidden');
+                        break;
+
+                    default:
+                        // Fail
+                        $('#ask_permission').fadeIn();
+                        $('.half').addClass('hidden');
+                        return false;
+                        break;
+                }
+            }
+
+            /**
+             * Create a plain text notification box
+             */
+            function plain_text_notification(title, image, content)
+            {
+                //var n = new Notifications( title, image, content);
+                //var randomQuote = quoteChooser();
+                console.log(image);
+                var options = {
+                    body: content,//randomQuote,
+                    icon: "img/guji2.png"//image
+                }
+                var n = new Notification(title, options);
+
+                setTimeout(n.close.bind(n), 4000);
+            }
+
+            /**
+             * Create a notification box with html inside
+             */
+            function html_notification(url)
+            {
+                var options = {
+                   // body: url,//randomQuote,
+                    icon: "img/guji2.png",
+                    dir: 'ltr',
+                    tag: 2,
+                    data: 'I like peas.'
+                }
+                var notification = new Notification( url,options );
+
+                notification.onclick = function(event) {
+                    event.preventDefault(); // prevent the browser from focusing the Notification's tab
+                    window.open('http://www.mozilla.org', '_blank');
+                }
+                /**
+                Notification函数的第一个参数设定了通知栏的题目(title)，
+                 而第二个参数则是一个option 对象，该对象可设置如下属性：
+                    body ：设置通知栏的正文内容。
+                    dir ：界说通知栏文本的显示标的目的，可设为auto（主动）、ltr（从左到右）、rtl（从右到左）。
+                    lang ：声明通知栏内文本所使用的语种。（译注：该属性的值必需属于BCP 47 language tag。）
+                    tag：为通知栏分配一个ID值，便于检索、替代或者移除了通知栏。
+                    icon ：设置作为通知栏icon的图片的URL
+                 */
+            }
+
+        })(jQuery);
+    </script>
+</head>
+<body>
+<section class="container">
+    <div class="inner_container">
+        <div id=message class="hidden"></div>
+        <div id=notification_demo class=aligncenter>
+            <p><input type=button id=ask_permission value="Grant Permission To Display Notifications" /></p>
+
+            <div id=plain_text class=half>
+                <h3>Display Plain Text</h3>
+
+                <form id=plain_text_form>
+                    <p>Title: <input type="text" id="title" value="Notification Demo" /></p>
+                    <!--<p>Icon: <input type="text" id="icon" value="img/guji2.png" /></p> -->
+                    <!--<p>Icon: <input type="file" id="icon" value="img/guji2.png" /></p-->
+                    <p>Text: <input type="text" id="text" value="Example of text in notification" /></p>
+                    <p><input type="button" id="text_button" value="Display Notification" /></p>
+                </form>
+            </div>
+
+            <div id=html_notification class=half>
+                <h3>Display HTML</h3>
+                <form id=html_form>
+                    <p>URL: <input type="url" id="url" value="https://paulund.co.uk" /></p>
+                    <p><input type="button" id="html_button" value="Display Notification" /></p>
+                </form>
+            </div>
+
+            <p style="clear:both"><a href="https://paulund.co.uk/html5-notifications">Return To Tutorial</a></p>
+        </div>
+    </div>
+</section>
+</body>
+</html>

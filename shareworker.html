@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Shared worker example: how to use shared worker in HTML5</title>
+
+    <script>
+        var worker = new SharedWorker('js/sharedworker.js');
+        var log = document.getElementById('response_from_worker');
+        worker.port.addEventListener('message', function(e) {
+            //log the response data in web page
+            log.textContent =e.data;
+        }, false);
+        worker.port.start();
+        worker.port.postMessage('ping from user web page..');
+
+        //following method will send user input to sharedworker
+        function postMessageToSharedWorker(input)
+        {
+            //define a json object to construct the request
+            var instructions={instruction:input.value};
+            worker.port.postMessage(instructions);
+        }
+    </script>
+
+</head>
+<body onload=''>
+<output id='response_from_worker'>
+    Shared worker example: how to use shared worker in HTML5
+</output>
+send instructions to shared worker:
+<input type="text" autofocus oninput="postMessageToSharedWorker(this);return false;">
+</input>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<html><head>
+    <title>手机震动navigatorAPI</title>
+    <meta http-equiv="imagetoolbar" content="no">
+    <script type="text/javascript">
+        var supportsVibrate = "vibrate" in navigator;
+        var vibrateInterval;
+
+        if(supportsVibrate){
+            alert("支持");
+            // 振动1秒
+            //navigator.vibrate(1000);
+
+            // 振动多次
+            // 参数分别是震动3秒，等待2秒，然后振动1秒
+            //navigator.vibrate([3000, 2000, 1000]);
+
+            //停止震动，你只需要向navigator.vibrate方法里传入0，或一个空数组：
+            //navigator.vibrate(0);
+            //navigator.vibrate([]);
+
+            //使用setInterval和clearInterval方法产生让手机持续震动。
+            startPeristentVibrate(2000, 1000);
+        }else{
+            alert("不支持");
+        }
+
+        function startVibrate(duration) {
+            navigator.vibrate(duration);
+        }
+        function stopVibrate() {
+            // Clear interval and stop persistent vibrating
+            if(vibrateInterval) clearInterval(vibrateInterval);
+            navigator.vibrate(0);
+        }
+        function startPeristentVibrate(duration, interval) {
+            vibrateInterval = setInterval(function() {
+                startVibrate(duration);
+            }, interval);
+        }
+    </script>
+</head>
+
+<body>
+<div id="FPS">手机震动</div>
+
+
+</body></html>
