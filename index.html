@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="keywords" content="蜜桃乡,后台管理系统">
+<meta name="description" content="蜜桃乡后台管理系统，对蜜桃乡网站提供后台管理服务">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <title>JavaScript示例展示导航</title>
+   <link href="./img/favicon.ico" rel="shortcut icon">
+	
+</head>
+<body>
+<div>
+	<h3>JavaScript示例展示导航</h3>
+	<ul id="linkList">
+	
+	</ul>
+<div>
+<script>
+var infos = [
+{
+	name: "获取摄像功能",
+	link: "cam"
+},{
+	name: "获取摄像功能",
+	link: "cam"
+},{
+	name: "手机震动",
+	link: "navigator"
+},{
+	name: "svg动画",
+	link: "svgAnimation"
+},{
+	name: "显示桌面通知",
+	link: "notifications"
+},{
+	name: "自定义桌面通知",
+	link: "notifications0"
+},{
+	name: "地理位置",
+	link: "geolocation"
+},{
+	name: "拖拽功能",
+	link: "html5-drag-and-drop"
+},{
+	name: "滑动删除",
+	link: "slidesDelete"
+},{
+	name: "获取摄像功能",
+	link: "cam"
+},{
+	name: "canvas点击操作",
+	link: "canvasClick"
+}
+];
+var str = "";
+for(i in infos){
+console.log(infos[i].link);
+	str += "<li><a href='./" + infos[i].link + ".html'>" + infos[i].name + "</a></li>";
+}
+document.getElementById("linkList").innerHTML = str; 
+</script>
+</body>
+</html>
