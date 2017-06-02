@@ -1,0 +1,188 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>
+js拖拽组件
+</title>
+<script type="text/javascript" >
+var Drag={
+"obj":null,
+"init":function(handle, dragBody, e){
+if (e == null) {
+handle.onmousedown=Drag.start;
+}
+handle.root = dragBody;
+if(isNaN(parseInt(handle.root.style.left)))handle.root.style.left="0px";
+if(isNaN(parseInt(handle.root.style.top)))handle.root.style.top="0px";//确保后来能够取得top值
+handle.root.onDragStart=new Function();
+handle.root.onDragEnd=new Function();
+handle.root.onDrag=new Function();
+if (e !=null) {
+var handle=Drag.obj=handle;
+e=Drag.fixe(e);
+var top=parseInt(handle.root.style.top);
+var left=parseInt(handle.root.style.left);
+handle.root.onDragStart(left,top,e.pageX,e.pageY);
+handle.lastMouseX=e.pageX;
+handle.lastMouseY=e.pageY;
+document.onmousemove=Drag.drag;
+document.onmouseup=Drag.end;
+}
+},
+"start":function(e){
+var handle=Drag.obj=this;
+e=Drag.fixEvent(e);
+var top=parseInt(handle.root.style.top);
+var left=parseInt(handle.root.style.left);
+//alert(left)
+//一般情况下 left top 在初始的时候都为0
+handle.root.onDragStart(left,top,e.pageX,e.pageY);
+handle.lastMouseX=e.pageX;
+handle.lastMouseY=e.pageY;
+document.onmousemove=Drag.drag;
+document.onmouseup=Drag.end;
+return false;
+},
+"drag":function(e){//这里的this为document 所以拖动对象只能保存在Drag.obj里
+e=Drag.fixEvent(e);
+var handle=Drag.obj;
+var mouseY=e.pageY;
+var mouseX=e.pageX;
+var top=parseInt(handle.root.style.top);
+var left=parseInt(handle.root.style.left);//这里的top和left是handle.root距离浏览器边框的上边距和左边距
+var currentLeft,currentTop;
+currentLeft=left+mouseX-handle.lastMouseX;
+currentTop=top+(mouseY-handle.lastMouseY);
+//上一瞬间的上边距加上鼠标在两个瞬间移动的距离 得到现在的上边距
+handle.root.style.left=currentLeft +"px";
+handle.root.style.top=currentTop+"px";
+//更新当前的位置
+handle.lastMouseX=mouseX;
+handle.lastMouseY=mouseY;
+//保存这一瞬间的鼠标值 用于下一次计算位移
+handle.root.onDrag(currentLeft,currentTop,e.pageX,e.pageY);//调用外面对应的函数
+return false;
+},
+"end":function(){
+document.onmousemove=null;
+document.onmouseup=null;
+Drag.obj.root.onDragEnd(parseInt(Drag.obj.root.style.left),parseInt(Drag.obj.root.style.top));
+Drag.obj=null;
+},
+"fixEvent":function(e){//格式化事件参数对象
+if(typeof e=="undefined")e=window.event;
+if(typeof e.layerX=="undefined")e.layerX=e.offsetX;
+if(typeof e.layerY=="undefined")e.layerY=e.offsetY;
+if(typeof e.pageX == "undefined")e.pageX = e.clientX + document.body.scrollLeft - document.body.clientLeft;
+if(typeof e.pageY == "undefined")e.pageY = e.clientY + document.body.scrollTop - document.body.clientTop;
+return e;
+}
+};
+</script>
+<script type="text/javascript">
+function findPosX(obj) {//辅助函数 得到元素左边与浏览器左边的边距
+var curleft = 0;
+if (obj && obj.offsetParent) {
+while (obj.offsetParent) {
+curleft += obj.offsetLeft;
+obj = obj.offsetParent;
+}
+} else if (obj && obj.x) curleft += obj.x;
+return curleft;// + document.body.scrollLeft - document.body.clientLeft;
+}
+function findPosY(obj) {//辅助函数 得到元素上边与浏览器上边的边距
+var curtop = 0;
+if (obj && obj.offsetParent) {
+while (obj.offsetParent) {
+curtop += obj.offsetTop;
+obj = obj.offsetParent;
+}
+} else if (obj && obj.y) curtop += obj.y;
+return curtop;// + document.body.scrollTop - document.body.clientTop;
+}
+var dragGhost;
+var container;
+window.onload = function(){
+dragGhost = document.getElementById("dragGhost");
+container = document.getElementById("container");
+var nodes = container.getElementsByTagName("li");
+for(var i=0;i<nodes.length;i++){
+var li = nodes[i];
+if(li.id != "dragGhost"){
+new dragItem(li);
+}
+}
+}
+var isIE = document.all;
+function dragItem(item){
+Drag.init(item,item);
+item.onDragStart = function(left,top,mouseX,mouseY){
+this.style.left = findPosX(this);
+this.style.top = findPosY(this);
+this.style.position = "absolute";
+//将ghost插入到当前位置
+dragGhost.style.display = "block";
+dragGhost.style.width = isIE?this.offsetWidth:this.offsetWidth - 2;//边框问题
+dragGhost.style.height = isIE?this.offsetHeight:this.offsetHeight - 2;
+this.parentNode.insertBefore(dragGhost,this);
+}
+item.onDrag = function(left,top,mouseX,mouseY){
+var nodes = container.getElementsByTagName("li");
+var width = this.offsetWidth;
+var height = this.offsetHeight;
+for(var i=0;i<nodes.length + 1;i++){
+if(nodes[i] == null){
+container.appendChild(dragGhost);//拖动到最后一项
+break;
+}
+if(nodes[i].id == "dragGhost" || nodes[i] == this){
+continue;
+}
+if(mouseX < findPosX(nodes[i]) + width
+&& mouseY < findPosY(nodes[i]) + height){
+container.insertBefore(dragGhost,nodes[i]);
+break;
+}
+}
+}
+item.onDragEnd = function(left,top,mouseX,mouseY){
+container.insertBefore(this,dragGhost);
+this.style.position = "static";
+this.style.display = "block";
+dragGhost.style.display = "none";
+}
+}
+</script>
+<style type="text/css">
+ul{margin:20px;padding:10px;border:solid 1px #CCCCCC;list-style:none;float:left;}
+li{margin:5px;padding:5px;border:solid 1px #CCCCCC;background:#FCFCFC;float:left;cursor:pointer;}
+#dragGhost{border-style:dashed;display:none;padding:0px;margin:5px;}
+</style>
+</head>
+<body>
+<ul id="container">
+<li>
+Item1
+</li>
+<li>
+Item2
+</li>
+<li>
+Item3
+</li>
+<li>
+Item4
+</li>
+<li>
+Item5
+</li>
+<li>
+Item6
+</li>
+<li>
+Item7
+</li>
+<li id="dragGhost">
+</li>
+</ul>
+</body>
+</html>
