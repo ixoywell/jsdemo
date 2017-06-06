@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>纯HTML+CSS圆角提示框-兼容所有浏览器</title>
+<style>
+/*提示圆角框*/
+.circle_bot { clear:both; font: 12px/1.125 Arial; }
+.circle_bot .s_b b, .circle_bot span.s_i i { font-size:1px; line-height:1px; overflow:hidden; display:block; clear:both; }
+.circle_bot .s_b b, .circle_bot span.s_i i, .circle_bot .info { background:#fff2f2; border:#f88 solid; }
+.circle_bot b.b1 { border-width:1px 0 0 0; margin:0 2px; height:0px; }
+.circle_bot b.b2 { border-width:0 1px; margin:0 1px; height:1px; }
+.circle_bot span.s_i i { height:1px; border-width:0 1px; }
+.circle_bot .i1 { width:0px; margin-left:36px; }
+.circle_bot .i2 { width:2px; margin-left:35px; }
+.circle_bot .i3 { width:4px; margin-left:34px; }
+.circle_bot .i4 { width:6px; margin-left:33px; }
+.circle_bot .i5 { width:8px; margin-left:32px; }
+.circle_bot .i6 { width:10px; margin-left:31px; margin-top:-1px; }
+.circle_bot .info { border-width:0 1px; color:#333; padding:10px;}
+/*浅黄边白底*/
+div.circle_yellow {clear:both;}
+div.circle_yellow .s_b b,div.circle_yellow .s_i i, div.circle_yellow .info { background:#fff; border-color:#db9; }
+</style>
+</head>
+<body>
+<div class="circle_bot">
+	<span class="s_b"> <b class="b1"></b> <b class="b2"></b></span>
+	<div class="info">有研究的同志可以进一步完善!</div>
+	<span class="s_b"><b class="b2"></b> <b class="b1"></b></span>
+	<span class="s_i"> <i class="i6"></i> <i class="i5"></i> <i class="i4"></i> <i class="i3"></i> <i class="i2"></i> <i class="i1"></i></span>
+</div>
+<br />
+<div class="circle_bot circle_yellow">
+	<span class="s_b"> <b class="b1"></b> <b class="b2"></b></span>
+	<div class="info">有研究的同志可以进一步完善!</div>
+	<span class="s_b"><b class="b2"></b> <b class="b1"></b></span>
+	<span class="s_i"> <i class="i6"></i> <i class="i5"></i> <i class="i4"></i> <i class="i3"></i> <i class="i2"></i> <i class="i1"></i></span>
+</div>
+</body>
+</html>

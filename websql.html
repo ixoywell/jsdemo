@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Web SQL Database</title>
+</head>
+<body>
+<script type="text/javascript">
+    var db = openDatabase('testDB', '1.0', 'Test DB', 2 * 1024 * 1024);//openDatabase接收五个参数：数据库名字，数据库版本号，显示名字，数据库保存数据的大小（以字节为单位 )，回调函数（非必须)
+    var msg;
+
+    //transaction方法用以处理事务，当一条语句执行失败的时候，整个事务回滚。方法有三个参数: 包含事务内容的一个方法， 执行成功回调函数（可选）， 执行失败回调函数（可选）
+    db.transaction(function (context) {
+        //executeSql方法用以执行SQL语句，返回结果，方法有四个参数：查询字符串， 用以替换查询字符串中问号的参数， 执行成功回调函数（可选）， 执行失败回调函数（可选）
+        context.executeSql('CREATE TABLE IF NOT EXISTS testTable (id unique, name)');
+        context.executeSql('INSERT INTO testTable (id, name) VALUES (0, "Byron")');
+        context.executeSql('INSERT INTO testTable (id, name) VALUES (1, "Casper")');
+        context.executeSql('INSERT INTO testTable (id, name) VALUES (2, "Frank")');
+    });
+    db.transaction(function (context) {
+        context.executeSql('SELECT * FROM testTable', [], function (context, results) {
+            var len = results.rows.length, i;
+            console.log('Got '+len+' rows.');
+            for (i = 0; i < len; i++){
+                console.log('id: '+results.rows.item(i).id);
+                console.log('name: '+results.rows.item(i).name);
+            }
+        });
+    });
+</script>
+</body>
+</html>

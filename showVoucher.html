@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			li{
+				list-style-type: none;
+			}
+			.vou-select{
+				width: 150px;
+				height: 30px;
+				line-height: 30px;
+				border: 1px solid #e6e8ee;
+				font-size: 12px;
+				border-radius: 2px;
+			}
+			.vou-select span{
+				margin-left: 10px;
+				color: #df0000;
+			}
+			.vou-select .arrow{
+				float:right;
+				width: 9px;
+				height: 5px;
+				display: block;
+				background: url(img/vou-arrow.png) no-repeat;	
+				margin: 12px 5px 0 0;
+			}
+			.vou-select .arrow-on {
+				background-position: 0 -20px;
+			}
+			.vou-list{
+				display: none;
+				width: 270px;
+				height: 240px;
+				overflow-y:scroll;
+				overflow-x: hidden;
+				padding: 0 10px;
+				border: 1px solid #e6e8ee;
+				margin-top: -1px;
+			}
+			.vou-list li{
+				width: 250px;
+				height: 45px;
+				border-bottom: 1px solid #e6e8ee;
+			}
+			.vou-list li .vou-bg{
+				float: left;
+				display: block;
+				width: 67px;
+				height: 30px;
+				background: url(img/vou-arrow.png) 0 -37px no-repeat;
+				margin: 7px 0;
+				color: white;
+			}
+			.vou-list li .vou-bg p{
+				margin-left: 5px;
+			}
+			.vou-list li .vou-bg strong{
+				font-size: 27px;
+			}
+			.vou-list li .effective-age{
+				float:left;
+				margin: 3px 0 0 0;
+			}
+			.vou-list li .effective-age p{
+				height:20px;
+				line-height: 20px;
+				font-size: 12px;
+				color: #999;
+				margin: auto
+			}
+				
+			ul,p{
+				-webkit-margin-before: 0em;
+    			-webkit-margin-after: 0em;
+			}
+			.vou-list li .vou-use-btn{
+				float: right;
+				font-size: 14px;
+				width: 50px;
+				height: 25px;
+				line-height: 25px;
+				border-radius: 2px;
+				color: #ef0000;
+				margin: 10px 0;
+				border: 1px solid #ef0000;
+				text-align: center;
+			}
+			.vou-list li .vou-use-selected{
+				color: #999;
+				border: 1px solid #999;
+			}
+		</style>
+		<script type="text/javascript" src="js/jquery-1.7.2.min.js" ></script>
+	</head>
+	<body>
+		<div class="vou-select">
+			代金券抵扣<span class="vou-total">0.00元</span>
+			<span class="arrow"></span>
+		</div>
+		<ul class="vou-list">
+			<li>
+				<input type="checkbox" name="choice" value="${avoucher.id}" value="12" style="display: none"/>
+				<span class="vou-bg">
+					<p>￥<strong>2</strong></p>
+				</span>
+				<div class="effective-age">
+					<p>有效使用期</p>
+					<p>2015.1.2-2015.12.30</p>
+				</div>
+				<div class="vou-use-btn">使用</div>
+			</li>
+			<li>
+				<input type="checkbox" name="choice" value="${avoucher.id}" value="12" style="display: none"/>
+				<span class="vou-bg">
+					<p>￥<strong>20</strong></p>
+				</span>
+				<div class="effective-age">
+					<p>有效使用期</p>
+					<p>2015.1.2-2015.12.30</p>
+				</div>
+				<div class="vou-use-btn">使用</div>
+			</li>
+			<li>
+				<input type="checkbox" name="choice" value="${avoucher.id}" value="12" style="display: none"/>
+				<span class="vou-bg">
+					<p>￥<strong>30</strong></p>
+				</span>
+				<div class="effective-age">
+					<p>有效使用期</p>
+					<p>2015.1.2-2015.12.30</p>
+				</div>
+				<div class="vou-use-btn">使用</div>
+			</li>
+			<li>
+				<input type="checkbox" name="choice" value="${avoucher.id}" style="display: none"/>
+				<span class="vou-bg">
+					<p>￥<strong>10</strong></p>
+				</span>
+				<div class="effective-age">
+					<p>有效使用期</p>
+					<p>2015.1.2-2015.12.30</p>
+				</div>
+				<div class="vou-use-btn">使用</div>
+			</li>
+			<li>
+				<input type="checkbox" name="choice" value="${avoucher.id}" style="display: none"/>
+				<span class="vou-bg">
+					<p>￥<strong>50</strong></p>
+				</span>
+				<div class="effective-age">
+					<p>有效使用期</p>
+					<p>2015.1.2-2015.12.30</p>
+				</div>
+				<div class="vou-use-btn">使用</div>
+			</li>
+			<li>
+				<input type="checkbox" name="choice" value="${avoucher.id}" style="display: none"/>
+				<span class="vou-bg">
+					<p>￥<strong>20</strong></p>
+				</span>
+				<div class="effective-age">
+					<p>有效使用期</p>
+					<p>2015.1.2-2015.12.30</p>
+				</div>
+				<div class="vou-use-btn">使用</div>
+			</li>
+		</ul>
+	</body>
+	<script>
+		$('.vou-select').click(function(){
+			$('.vou-list').slideToggle();
+			$('.arrow').toggleClass('arrow-on');
+		})
+		$('.vou-use-btn').click(function(){
+			if($(this).hasClass('vou-use-selected')){
+				$(this).removeClass('vou-use-selected').html("使用");
+				$(this).siblings('input[name="choice"]').attr("checked", false); 
+			}else{
+				$(this).addClass('vou-use-selected').html("取消");
+				$(this).siblings('input[name="choice"]').attr("checked", true); 
+			}
+			selectedVou();
+		})
+		function selectedVou(){
+		    var sum = 0;
+			var vou= $('.vou-list li input[type="checkbox"]:checked').siblings('.vou-bg').find('strong');
+			$.each(vou,function(){
+				sum += parseInt($(this).text());
+			})
+			$('.vou-total').html(sum.toFixed(2)+'元');
+		}
+		
+	</script>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title> 多行文字实现垂直居中 </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <style type="text/css">
+ body { font-size:12px;font-family:tahoma;}
+ div#wrap {
+  display:table;
+  border:1px solid #FF0099;
+  background-color:#FFCCFF;
+  width:200px;
+  height:300px;
+  _position:relative;
+  overflow:hidden;
+ }
+ div#subwrap {
+  vertical-align:middle;
+  display:table-cell;
+  _position:absolute;
+  _top:50%;
+ }
+ div#content { 
+  _position:relative;
+  _top:-50%;
+ }
+  </style>
+ </head>
+ <body>
+ <div id="wrap">
+  <div id="subwrap">
+   <div id="content">
+   	<pre>现在我们要使这段文字垂直居中显示！斯蒂芬森大厦发生发生的方式发送防辐射服撒旦发生发生斯蒂芬 让他韦尔奇围绕区委韦尔奇围绕区委人情味儿
+	</pre>
+  </div>
+ </div>
+</div>
+ </body>
+</html>

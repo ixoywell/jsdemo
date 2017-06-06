@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<P>请选择下面的下拉菜单测试换肤效果</P>
+<a href="http://www.haorooms.com/post/js_changeshin# onclick="changecss("'css.css')">css.css</a>
+<a href="http://www.haorooms.com/post/js_changeshin# onclick="changecss("'css1.css')">css1.css</a>
+<a href="http://www.haorooms.com/post/js_changeshin# onclick="changecss("'css2.css')">css2.css</a>
+<a href="http://www.haorooms.com/post/js_changeshin# onclick="changecss("'css3.css')">css3.css</a>
+<br>
+<select onchange="changecss(this.value)">
+<option>选择样式单文件</option>
+<script language="javascript">
+var csss=new Array();
+csss[0]="css.css";
+csss[1]="css1.css";
+csss[2]="css2.css";
+csss[3]="css3.css";
+var i;
+for(i=0;i<4;i++)
+     if(thisskin==csss[i])
+           document.write("<option value=\""+csss[i]+"\" selected>"+csss[i]+"样式单文件</option>");
+     else
+           document.write("<option value=\""+csss[i]+"\">"+csss[i]+"样式单文件</option>");
+
+</script>
+</select>
+<script>
+function SetCookie(name,value){
+     var argv=SetCookie.arguments;
+     var argc=SetCookie.arguments.length;
+     var expires=(2<argc)?argv[2]:null;
+     var path=(3<argc)?argv[3]:null;
+     var domain=(4<argc)?argv[4]:null;
+     var secure=(5<argc)?argv[5]:false;
+     document.cookie=name+"="+escape(value)+((expires==null)?"":("; expires="+expires.toGMTString()))+((path==null)?"":("; path="+path))+((domain==null)?"":("; domain="+domain))+((secure==true)?"; secure":"");
+}
+function GetCookie(Name) {
+     var search = Name + "=";
+     var returnvalue = "";
+     if (document.cookie.length > 0) {
+           offset = document.cookie.indexOf(search);
+           if (offset != -1) {
+                 offset += search.length;
+                 end = document.cookie.indexOf(";", offset);
+                 if (end == -1)
+                       end = document.cookie.length;
+                 returnvalue=unescape(document.cookie.substring(offset,end));
+           }
+     }
+     return returnvalue;
+}
+var thisskin;
+thisskin=GetCookie("nowskin");
+if(thisskin!="")
+     skin.href="http://www.haorooms.com/post/thisskin;
+else
+     skin.href="css.css";
+function changecss(url){
+     if(url!=""){
+           skin.href=url;
+           var expdate=new Date();
+           expdate.setTime(expdate.getTime()+(246060100030));
+           //expdate=null;
+                                   //以下设置COOKIES时间为1年,自己随便设置该时间..
+           SetCookie("nowskin",url,expdate,"/",null,false);
+     }
+}
+</script>
+	</body>
+</html>
+//网站换肤
+/*
+$(function () {
+    var $li = $("#skin li");
+    $li.click(function () {
+        switchSkin(this.id);
+    });
+    var cookie_skin = $.cookie("MyCssSkin");
+    if (cookie_skin) {
+        switchSkin(cookie_skin);
+    }
+});
+ 
+function switchSkin(skinName) {
+    $("#" + skinName).addClass("selected") //当前<li>元素选中
+    .siblings().removeClass("selected"); //去掉其他同辈<li>元素的选中
+    $("#cssfile").attr("href", "styles/skin/" + skinName + ".css"); //设置不同皮肤
+    $.cookie("MyCssSkin", skinName, {
+        path : '/',
+        expires : 10
+    });
+}
+*/

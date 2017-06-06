@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.circle {
+width: 200px;
+height: 200px;
+position: absolute;
+border-radius: 50%;
+background: #0cc;
+}
+  
+.left,.right{
+width:200px;
+height:200px;
+position: absolute;
+top: 0px;left: 0px;
+}
+.pie_left, .pie_right{
+width:200px;
+height:200px;
+position: absolute;
+border-radius: 50%;
+top: 0px;left: 0px;
+background: red;
+}
+  
+.pie_right,.right {
+clip:rect(0,auto,auto,100px);
+}
+.pie_left , .left{
+clip:rect(0,100px,auto,0);
+}
+  
+/*
+*当top和left取值为auto时，相当于0
+*当bottom和right取值为auto时，相当于100%
+*/
+.mask {
+width: 150px;
+height: 150px;
+border-radius: 50%;
+left: 25px;
+top: 25px;
+/*background: #FFF;*/
+position: absolute;
+text-align: center;
+line-height: 150px;
+font-size: 16px;
+}
+		</style>
+	</head>
+	
+	<body>
+		<div class="circle">
+<div class="pie_left"><div class="left"></div></div>
+<div class="pie_right"><div class="right"></div></div>
+<div class="mask"><span>10</span>%</div>
+</div>
+<script src="js/jquery-1.11.2.js"></script>
+<script>
+	$(function(){
+if( $('.mask span').text() <= 50 ){
+$('.pie_right').css('transform','rotate('+($('.mask span').text()*3.6)+'deg)');
+}else{
+$('.pie_right').css('transform','rotate(180deg)');
+$('.pie_left').css('transform','rotate('+(($('.mask span').text()-50)*3.6)+'deg)');
+}
+})
+</script>
+	</body>
+</html>

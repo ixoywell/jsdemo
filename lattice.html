@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <style type="text/css">
+        .in
+        {
+            background-color: Black;
+        }
+        td
+        {
+            border: 1px solid #eaeaea;
+            width: 2px;
+            height: 2px;
+        }
+    </style>
+    <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        //8*8 数字点阵
+        var chars = {};
+        chars.A = [[0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 1, 1, 0, 0, 0], [0, 0, 1, 0, 0, 1, 0, 0], [0, 0, 1, 0, 0, 1, 0, 0], [0, 0, 1, 1, 1, 1, 0, 0], [0, 0, 1, 0, 0, 1, 0, 0], [0, 0, 1, 0, 0, 1, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0]];
+        chars.B = [[0, 0, 1, 1, 0, 0, 0, 0], [0, 0, 1, 0, 1, 0, 0, 0], [0, 0, 1, 0, 1, 0, 0, 0], [0, 0, 1, 1, 0, 0, 0, 0], [0, 0, 1, 0, 1, 0, 0, 0], [0, 0, 1, 0, 1, 0, 0, 0], [0, 0, 1, 0, 1, 0, 0, 0], [0, 0, 1, 1, 0, 0, 0, 0]];
+        chars.C = [[0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 1, 1, 0, 0, 0], [0, 0, 1, 0, 0, 1, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 1, 0, 0], [0, 0, 0, 1, 1, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0]];
+        chars.D = [[0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 1, 1, 0, 0, 0], [0, 0, 1, 0, 0, 1, 0, 0], [0, 0, 1, 0, 0, 1, 0, 0], [0, 0, 1, 0, 0, 1, 0, 0], [0, 0, 1, 0, 0, 1, 0, 0], [0, 0, 1, 1, 1, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0]];
+        chars.E = [[0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 1, 1, 1, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0], [0, 0, 1, 1, 1, 1, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0], [0, 0, 1, 1, 1, 1, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0]];
+        chars.F = [[0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 1, 1, 1, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0], [0, 0, 1, 1, 1, 1, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0]];
+    </script>
+</head>
+<body>
+8*8 点阵<br />
+请输入字母(A~F)：<input type="text" id="txtChar" />
+<input id="btnGeneral" type="button" value="生成" />
+<table id="tableDot" cellpadding="0" cellspacing="0">
+    <script>
+        for (var i = 0; i < 8; i++) {
+            document.write("<tr>");
+            for (var j = 0; j < 8; j++) {
+                document.write("<td></td>");
+            }
+            document.write("</tr>");
+        }
+    </script>
+</table>
+<script type="text/javascript">
+    $("#btnGeneral").click(function () {
+        var input_char = $("#txtChar").val();
+        try {
+            var charHex = chars[input_char];
+            $(".in").removeClass("in");
+            $("#tableDot tr").each(function (i) {
+                $(this).find("td").each(function (j) {
+                    if (charHex[i][j] == 1) {
+                        $(this).addClass("in");
+                    }
+                })
+            })
+        } catch (e) {
+
+        }
+    })
+</script>
+</body>
+</html>

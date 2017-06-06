@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+		<script>
+			 //hours为空字符串时,cookie的生存期至浏览器会话结束。hours为数字0时,建立的是一个失效的cookie,这个cookie会覆盖已经建立过的同名、同path的cookie（如果这个cookie存在）。   
+			function setCookie(name, value, hours, path) {
+					var name = escape(name);
+					var value = escape(value);
+					var expires = new Date();
+					expires.setTime(expires.getTime() + hours * 3600000);
+					path = path == "" ? "" : ";path=" + path;
+					_expires = (typeof hours) == "string" ? "" : ";expires=" + expires.toUTCString();
+					document.cookie = name + "=" + value + _expires + path;
+				}
+				//获取cookie值    方法
+
+			function getCookieValue(name) {
+					var name = escape(name);
+					//读cookie属性，这将返回文档的所有cookie   
+					var allcookies = document.cookie;
+					//查找名为name的cookie的开始位置   
+					name += "=";
+					var pos = allcookies.indexOf(name);
+					//如果找到了具有该名字的cookie，那么提取并使用它的值   
+					if (pos != -1) { //如果pos值为-1则说明搜索"version="失败   
+						var start = pos + name.length; //cookie值开始的位置   
+						var end = allcookies.indexOf(";", start); //从cookie值开始的位置起搜索第一个";"的位置,即cookie值结尾的位置   
+						if (end == -1) end = allcookies.length; //如果end值为-1说明cookie列表里只有一个cookie   
+						var value = allcookies.substring(start, end); //提取cookie的值   
+						return unescape(value); //对它解码         
+					} else return ""; //搜索失败，返回空字符串   
+				}
+				//登录事件
+
+			function doLogin() {
+					var userName = document.getElementById("username");
+					var pwd = document.getElementById("password");
+					if (userName.value.replace(/ /g, "") == "") {
+						alert("用户名不能为空！");
+						userName.focus();
+						return false;
+					}
+					if (pwd.value == "") {
+						alert("密码不能为空！");
+						pwd.focus();
+						return false;
+					}
+					setCookie('cookUser', userName.value, time, '/'); //set 获取用户名和密码 传给cookie
+					setCookie('cookPass', pwd.value, time, '/');
+					document.login_form.submit();
+			}
+				//设置Cookie保存时间
+			var time = 0;
+			$(document).ready(function() {
+				//获取Cookie保存的用户名和密码
+				var username = getCookieValue("cookUser");
+				var password = getCookieValue("cookPass");
+				if (username != '' && password != '') {
+					$("#username").val(username);
+					$("#password").val(password);
+					$("#rememberPW").attr("checked", true);
+				} else
+					$("#rememberPW").attr("checked", false);
+				$("#rememberPW").click(function() { //记住密码
+					if ($(this).attr("checked") == 'checked') {
+						time = 60 * 60 * 60;
+					}
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<form name="login_form">
+			<input id="username" type="text" style="width:287px;" id="j_username" name="j_username" value="">
+			<br style="font-family: Tahoma; font-size: 12px; line-height: 18px; white-space: normal;">
+			<br style="font-family: Tahoma; font-size: 12px; line-height: 18px; white-space: normal;">
+			<input id="password" type="password" style="width:287px;" id="j_password" name="j_password" value="" />
+			<br style="font-family: Tahoma; font-size: 12px; line-height: 18px; white-space: normal;">
+			<br style="font-family: Tahoma; font-size: 12px; line-height: 18px; white-space: normal;">
+			<input type="checkbox" id="rememberPW" name="rememberPW" />记住密码
+			<input type="button" value="login" onclick="doLogin();" />
+		</form>
+	</body>
+
+</html>

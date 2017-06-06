@@ -1,0 +1,176 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<meta charset="utf-8">
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<style>
+    @charset "utf-8";
+    /* CSS Document */
+    body {
+        background: url(images/img10.jpg) no-repeat fixed;
+    }
+
+    body, form, ul, ol, li, p, h1, h2, h3, h4, h5, h6, dl, dt, dd, table, fieldset, hr, div {
+        margin: 0;
+        padding: 0;
+    }
+
+    body, input, select, textarea {
+        color: #000;
+        font: 12px/1.8 "微软雅黑", Arial, Helvetica, sans-serif;
+    }
+
+    img {
+        border: 0;
+        vertical-align: middle;
+    }
+
+    table {
+        width: 100%;
+        border: 0;
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    ul, ol, li {
+        list-style-type: none;
+    }
+
+    a {
+        color: #000;
+        outline: none;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .contain {
+        width: 500px;
+        margin: 0 auto;
+        padding-top: 200px;
+    }
+</style>
+<body>
+<div class="contain">
+    <canvas id="myCanvas" height="40px" width="120px">your browser does not support the canvas tag</canvas>
+    <br/>
+    <input type="text" id="text">
+    <button onClick="pass()">提交</button>
+    <button id="saveImageBtn">Save Image</button>
+    <button id="downloadImageBtn">Download Image</button>
+</div>
+</body>
+<script type="text/javascript">
+    var saveButton = document.getElementById("saveImageBtn");
+    bindButtonEvent(saveButton, "click", saveImageInfo);
+    var dlButton = document.getElementById("downloadImageBtn");
+    bindButtonEvent(dlButton, "click", saveAsLocalImage);
+
+    function bindButtonEvent(element, type, handler)
+    {
+        if(element.addEventListener) {
+            element.addEventListener(type, handler, false);
+        } else {
+            element.attachEvent('on'+type, handler);
+        }
+    }
+
+    //  var canvas=$("#myCanvas");
+    var canvas = document.getElementById('myCanvas');
+    // alert(canvas.html());
+    var ctx = canvas.getContext("2d");
+    var cw = canvas.width;
+    var ch = canvas.height;
+    var return_str = "";
+    var _ifstart = false;
+    var _B_x = 0;
+    var _B_y = 0;
+    String.prototype.compare = function (str) {
+        //不区分大小写
+        return this.toLowerCase() == str.toLowerCase() ? true : false;
+    }
+    function pass() {
+        var _val = $("#text").val();
+        //   _val.compare(return_str)
+        if (_val.compare(return_str)) {
+            alert('您通过验证了！');
+        } else {
+            alert('您输入的验证码不正确！');
+        }
+        ;
+    }
+    function start() {
+        try {
+            function drawscreen() {
+                ctx.fillStyle = "#ffffaa";
+                ctx.fillRect(0, 0, cw,ch);
+               // ctx.strokeStyle = "#000";
+              //  ctx.strokeRect(5, 5, cw, ch);
+            };
+            function write_text(_str) {
+                var grd=ctx.createLinearGradient(0,0,cw,0);
+                grd.addColorStop(0, "#0F00F0");
+                grd.addColorStop("0.5","blue");
+                grd.addColorStop(1,"#00FF00");
+
+                ctx.fillStyle = grd;
+                ctx.font = "40px Times New Roman";
+                ctx.textBaseline = "top";
+                ctx.fillText(_str, 10, 0);
+            };
+            function ranColor(num){
+                return Math.round(Math.random()*num);
+            }
+            function write_line() {
+               // ctx.strokeStyle = "rgb(255,ranColor(255),ranColor(255))";
+              //  ctx.strokeStyle = "#f00";
+                ctx.lineWidth="2";
+                for (var i = 0; i < 4; i++) {
+                    ctx.strokeStyle = "rgb("+ ranColor(250) +"," + ranColor(252) + "," + ranColor(255) + ")";
+                    ctx.beginPath();
+                    ctx.moveTo(0,Math.random()*ch);
+                    ctx.lineTo(cw,Math.random()*ch);
+                    //ctx.closePath();
+                    ctx.stroke();
+                }
+            };
+            function getabc() {
+                // var _str="a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0,1,2,3,4,5,6,7,8,9";
+                // var _str_array=_str.split(",");
+                var _str_array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0,
+                    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+                    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+                for (i = 0; i < 4; i++) {
+                    var _rnd = Math.floor(Math.random() * _str_array.length);
+                    return_str += _str_array[_rnd];
+                }
+                ;
+            };
+            drawscreen();
+            getabc();
+            write_text(return_str);
+            write_line();
+        } catch (e) {
+            alert(e);
+        }
+    };
+
+    function saveImageInfo () {
+        var image = canvas.toDataURL("image/png");
+        var w=window.open('about:blank','image from canvas');
+        w.document.write("<img src='"+image+"' alt='from canvas'/>");
+    }
+
+    function saveAsLocalImage () {
+        //var myCanvas = document.getElementById("thecanvas");
+        // here is the most important part because if you dont replace you will get a DOM 18 exception.
+        // var image = myCanvas.toDataURL("image/png").replace("image/png", "image/octet-stream;Content-Disposition: attachment;filename=foobar.png");
+        var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+        window.location.href=image; // it will save locally
+    }
+    $(document).ready(function (e) {
+        start();
+    });
+</script>
+</html>

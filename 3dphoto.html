@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8"/>
+    <link href="css/reset.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="./js/jquery-1.7.2.min.js"></script>
+
+    <script type="text/javascript">
+        // alert( 64 / Math.tan(20 / 180 * Math.PI));
+        var transform = function (element, value, key)
+        {
+            key = key || "Transform";
+            ["Moz", "O", "Ms", "Webkit", ""].forEach(function (prefix)
+            {
+                element.style[prefix + key] = value;
+            });
+
+            return element;
+        }
+
+
+        $(function ()
+        {
+            var deg = -40 , i = 1;
+            $("#container").click(function ()
+            {
+                transform($(this)[0], "rotateY(" + (deg * i++) + "deg)")
+            });
+        });
+
+    </script>
+</head>
+<body>
+<div id="stage">
+    <ul id="container">
+        <li>
+            <img src="img/1.jpg"/>
+            <span>Do one thing at a time, and do well..</span>
+        </li>
+        <li>
+            <img src="img/2.jpg"/> <span>Do one thing at a time, and do well..</span>
+        </li>
+        <li>
+            <img src="img/3.jpg"/> <span>Keep on going never give up.</span>
+        </li>
+        <li>
+            <img src="img/4.jpg"/> <span>Whatever is worth doing is worth doing well.</span>
+        </li>
+        <li>
+            <img src="img/5.jpg"/> <span>Believe in yourself.</span>
+        </li>
+        <li>
+            <img src="img/6.jpg"/> <span>Action speak louder than words.</span>
+        </li>
+        <li>
+            <img src="img/7.jpg"/> <span>Never put off what you can do today until tomorrow.</span>
+        </li>
+        <li>
+            <img src="img/8.jpg"/> <span>Jack of all trades and master of none.</span>
+        </li>
+        <li>
+            <img src="img/9.jpg"/> <span>Judge not from appearances.</span>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

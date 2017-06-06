@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div style="height: 1800px; width: 30px;"></div>
+<button id="goTopBtn" style="width: 120px; height: 30px;">返回顶部</button>
+<script>
+    // JavaScript Document
+//    goTopEx();
+    function goTopEx(){
+        var obj=document.getElementById("goTopBtn");
+        function getScrollTop(){
+            return document.documentElement.scrollTop;
+        }
+        function setScrollTop(value){
+            document.documentElement.scrollTop=value;
+        }
+        window.onscroll=function(){getScrollTop()>0?obj.style.display="":obj.style.display="none";}
+        obj.onclick=function(){
+            var goTop=setInterval(scrollMove,10);
+            function scrollMove(){
+                setScrollTop(getScrollTop()/1.1);
+                if(getScrollTop()<1) {
+                    clearInterval(goTop);
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>

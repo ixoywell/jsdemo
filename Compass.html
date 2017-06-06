@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3实现Safari指南针动画</title>
+    <link rel="stylesheet" href="css/style.css" media="screen" type="text/css"/>
+</head>
+<body>
+<h1 class="title">CSS3实现Safari指南针动画</h1>
+<!--效果html开始-->
+<div class="safari">
+    <div class="compass">
+        <div class="needle">
+            <div class="white-pointer"></div>
+            <div class="screw"></div>
+            <div class="red-pointer"></div>
+        </div>
+        <div class="dial">
+            <div class="clock clock-0-6">
+                <div class="clock-half"></div>
+            </div>
+            <div class="clock clock-1-7">
+                <div class="clock-half"></div>
+            </div>
+            <div class="clock clock-2-8">
+                <div class="clock-half"></div>
+            </div>
+            <div class="clock clock-3-9">
+                <div class="clock-half"></div>
+            </div>
+            <div class="clock clock-4-10">
+                <div class="clock-half"></div>
+            </div>
+            <div class="clock clock-5-11">
+                <div class="clock-half"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--效果html结束-->
+
+<script>
+    var heading = 0,heads, headed;
+    var current_heading = 0;
+    var screw = document.getElementsByClassName("screw");
+    //var screwBefore = ruleSelector(screw,"::before").slice(-1);
+    // var screwAfter = ruleSelector(screw,"::after").slice(-1);
+
+    window.addEventListener('deviceorientation', update, false);
+
+    function update(event) {
+        var ua = navigator.userAgent.toLowerCase();
+//alert(ua);
+        //if (event.type == 'deviceorientation') {
+          //  alert(123123);
+        //}
+        var absolute = event.absolute;
+        var alpha = event.alpha;
+        var beta = event.beta;
+        var gamma = event.gamma;
+        heading = parseInt(alpha);
+        heads = parseInt(beta);
+        headed = parseInt(gamma);
+        //console.log(absolute + " " + alpha + " " + beta + " " + gamma);
+        //document.write(absolute + " " + alpha + " " + beta + " " + gamma);
+
+    }
+    function paint()
+    {
+        //heading = evt.alpha+15;
+        document.getElementsByClassName('title')[0].innerHTML=heading+"°";
+        document.getElementsByClassName('needle')[0].style.webkitTransform = "rotate("+heading+"deg)";
+     //   document.getElementsByClassName('safari')[0].style.webkitTransform = "rotateX("+heads+"deg)";
+       // document.getElementsByClassName('safari')[0].style.webkitTransform = "rotateY("+headed+"deg)";
+        setTimeout("paint();", 20);
+    }
+   paint();
+
+    //alert(checkMobile());
+   checkMobile();
+    function checkMobile(){
+        var flag = false;
+        var agent = navigator.userAgent.toLowerCase();
+        console.log(agent);
+        var keywords = [ "android", "iphone", "ipod", "ipad", "windows phone", "mqqbrowser" ];
+
+        //排除 Windows 桌面系统
+       if (!(agent.indexOf("windows nt") > -1) || (agent.indexOf("windows nt") > -1 && agent.indexOf("compatible; msie 9.0;") > -1)) {
+            //排除苹果桌面系统
+            if (!(agent.indexOf("windows nt") > -1) && !agent.indexOf("macintosh") > -1 ) {
+                for (var item in keywords) {
+                    if (agent.indexOf(item) > -1 ) {
+                        flag = true;
+                        break;
+                    }
+                }
+            }
+       }
+        console.log(flag);
+        alert(flag);
+        return flag;
+    }
+
+    /*
+     function ruleSelector(ele,selector) {
+     function uni(selector) {
+     return selector.replace(/::/g, ':')
+     }
+     return Array.prototype.filter.call(Array.prototype.concat.apply([], Array.prototype.map.call(ele.styleSheets, function(x) {
+     return Array.prototype.slice.call(x.cssRules);
+     })), function(x) {
+     return uni(x.selectorText) === uni(selector);
+     });
+     }
+     */
+
+</script>
+<!--
+<script>
+  function hiddeDiv(id)
+  {
+    document.getElementById('helpme').style.display='none';
+  }
+
+  function showhelp()
+  {
+    document.getElementById('helpme').style.display='';
+  }
+
+  var canvas = document.getElementsByClassName("compass");
+  var ctx=canvas.getContext('2d');
+  window.addEventListener('deviceorientation', update, false);
+  var imageObj_arrow=new Image();//载入针
+  imageObj_arrow.src="opera.png";
+  var heading = 0;
+  var current_heading = 0;
+  var max_speed = 10;
+  window.scrollTo(0,1);
+
+  function update(evt)
+  {
+    heading = evt.alpha+15;
+  }
+
+  function paint()
+  {
+    ww = canvas.width;
+    wh = canvas.height;
+
+    ctx.fillStyle="#404041";
+    ctx.fillRect(0,0,ww,wh);
+
+    ctx.save();
+    ctx.translate(ww/2,ww/2);
+
+    ctx.rotate(Math.PI*current_heading/180);
+    ctx.drawImage(imageObj_arrow,-ww/2,-wh/2, ww, wh);
+    ctx.restore();
+
+    //decide which direction is the fastest.
+    deg1 = heading - current_heading;
+    deg2 = 360 - Math.abs(deg1);
+
+    step = 0;
+
+    if (Math.abs(deg1) < Math.abs(deg2))
+    {
+      step = Math.min(Math.abs(deg1)/15, max_speed);
+      step = deg1 > 0? step: -step
+    }
+    else
+    {
+      step = Math.min(deg2/15, max_speed);
+      step = deg1 > 0? -step: step;
+    }
+
+    current_heading += step;
+    setTimeout("paint();", 33);
+  }
+
+
+  function preloader(){
+    var i = 0;
+    var imageObj = new Image();
+    imageObj.src="opera.png"
+  }
+
+  paint();
+</script>
+-->
+</body>
+</html>

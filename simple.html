@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>校验</title>
+	</head>
+	<body>
+	<input id='txt' type="text" onblur="check()" />
+	<script>
+		var a = 3, b;
+		/*
+if(a == 3){
+   b = 6;
+}
+else if(a == 2){
+   b = 4;
+}
+else{
+   b = 1;
+}
+简写成：
+*/
+b = a==3 && 6 || 
+      a==2 && 4 ||
+      1;
+alert(b);
+	</script>
+	</body>
+</html>

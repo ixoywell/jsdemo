@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>校验</title>
+	</head>
+	<body>
+	<input id='txt' type="text" onblur="check()" />
+	<script>
+		function check(){
+			var str = document.getElementById('txt').value;
+			var re = /^[0-9]+.?[0-9]*$/; //校验正浮点数
+			alert(re.test(str));
+		}
+	</script>
+	</body>
+</html>

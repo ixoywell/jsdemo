@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fly</title>
+    <link rel="stylesheet" rev="stylesheet" href="img/about-styles.css" type="text/css" media="all">
+</head>
+<body>
+<h1 id="showZone" style="position: fixed; top:10px; left:10px; z-index:10"></h1>
+<div class="slide" id="slide6" data-slide="6" data-stellar-background-ratio="0.25" style="background-position: 0px 20.75px;">
+    <img class="center travel-map" src="img/travel-map.png">
+
+    <img class="center travel-arrow travel-arrow-1" src="img/travel-arrow-1.png" data-stellar-ratio="1" style="display: block; left: 951.5px; top: 474.5px;">
+    <img class="center travel-arrow travel-arrow-2" src="img/travel-arrow-2.png" data-stellar-ratio="1" style="display: block; left: 951.5px; top: 474.5px;">
+    <img class="center travel-arrow travel-arrow-3" src="img/travel-arrow-3.png" data-stellar-ratio="1" style="display: block; left: 951.5px; top: 474.5px;">
+    <img class="center travel-arrow travel-arrow-4" src="img/travel-arrow-4.png" data-stellar-ratio="1" style="display: block; left: 951.5px; top: 474.5px;">
+    <img class="center travel-arrow travel-arrow-5" src="img/travel-arrow-5.png" data-stellar-ratio="1" style="display: block; left: 951.5px; top: 474.5px;">
+    <img class="center travel-arrow travel-arrow-6" src="img/travel-arrow-6.png" data-stellar-ratio="1" style="display: block; left: 951.489px; top: 474.504px;">
+    <img class="center travel-arrow travel-arrow-7" src="img/travel-arrow-7.png" data-stellar-ratio="1" style="display: block; left: 951.5px; top: 474.5px;">
+
+    <a href="http://www.yupoo.com/photos/yingjunjiu/albums/1870207/?style=story" target="_blank" title="辛辛那提 - 美国"><img class="center travel-photo travel-photo-1" src="img/travel-photo-1.png" data-stellar-ratio="1" style="display: block; left: 951.5px; top: 474.5px;"></a>
+    <a href="http://www.yupoo.com/photos/yingjunjiu/albums/2037242/?style=story" target="_blank" title="坎昆 - 墨西哥"><img class="center travel-photo travel-photo-2" src="img/travel-photo-2.png" data-stellar-ratio="1" style="display: block; left: 951.5px; top: 474.5px;"></a>
+    <a href="http://www.yupoo.com/photos/yingjunjiu/albums/4880718/?style=story" target="_blank" title="爱丁堡 - 英国"><img class="center travel-photo travel-photo-3" src="img/travel-photo-3.png" data-stellar-ratio="1" style="display: block; left: 951.5px; top: 474.5px;"></a>
+    <a href="http://www.yupoo.com/photos/yingjunjiu/albums/4821202/?style=story" target="_blank" title="清迈 - 泰国"><img class="center travel-photo travel-photo-4" src="img/travel-photo-4.png" data-stellar-ratio="1" style="display: block; left: 951.5px; top: 474.5px;"></a>
+    <a href="http://www.yupoo.com/photos/yingjunjiu/albums/1991958/?style=story" target="_blank" title="吴哥窟 - 柬埔寨"><img class="center travel-photo travel-photo-5" src="img/travel-photo-5.png" data-stellar-ratio="1" style="display: block; left: 951.5px; top: 474.5px;"></a>
+    <a href="http://www.yupoo.com/photos/yingjunjiu/albums/2028333/?style=story" target="_blank" title="内蒙古 - 中国"><img class="center travel-photo travel-photo-6" src="img/travel-photo-6.png" data-stellar-ratio="1" style="display: block; left: 951.5px; top: 474.5px;"></a>
+    <a href="http://www.yupoo.com/photos/yingjunjiu/albums/1870779/?style=story" target="_blank" title="北海道 - 日本"><img class="center travel-photo travel-photo-7" src="img/travel-photo-7.png" data-stellar-ratio="1" style="display: block; left: 951.5px; top: 474.5px;"></a>
+
+    <img class="center travel-plane" id="fly" src="img/travel-plane.gif" data-stellar-ratio="0.75" style="display: block; left: 951.34px; top: 453.75px;">
+
+    <div class="travel-mask"></div>
+    <img class="center travel-text" src="img/travel-text.png" data-stellar-ratio="1" style="display: block; left: 951.5px; top: 100px;">
+
+    <img class="center travel-icon" src="img/travel-icon.png" data-stellar-ratio="1" style="display: block; left: 951.5px; top: 100px;">
+    <a class="button" data-slide="7" title=""></a>
+
+</div>
+<script src="js/jquery-1.7.2.min.js"></script>
+<script>
+    document.onkeydown=function(event){
+        var event=event||window.event;
+        document.getElementById("showZone").innerHTML=event.keyCode;
+        var key = event.keyCode;
+        if(key == 37){
+
+        }
+    };
+    var ani = ' 5s linear 0.2s infinite backwards';
+    //var top,left;
+    $(document).keydown(function(event){
+        //top = document.getElementById('fly').style.top;
+        //top = $('#fly').style.top;
+        var top = $('#fly').offset().top;
+        var left = $('#fly').offset().left;
+        //console.log(top);
+        if(event.keyCode == 37){ //left
+            $('#fly').css({'webkitTransform':'rotate(180deg)','top':top+'px','left':left+'px'});
+            $('#fly').css({'webkitAnimation':'travel-plane0'+ ani});
+        }else if (event.keyCode == 38){ //down
+            $('#fly').css({'webkitTransform':'rotate(270deg)','top':top+'px','left':left+'px'});
+            $('#fly').css({'webkitAnimation':'travel-plane1'+ ani});
+        }else if (event.keyCode == 39){ //right
+            $('#fly').css({'webkitTransform':'rotate(0deg)','top':top+'px','left':left+'px'});
+            $('#fly').css({'webkitAnimation':'travel-plane'+ ani});
+        }else if (event.keyCode == 40){ //right
+            $('#fly').css({'webkitTransform':'rotate(90deg)','top':top+'px','left':left+'px'});
+            $('#fly').css({'webkitAnimation':'travel-plane2'+ ani});
+//do somethings;
+        }
+    });
+</script>
+</body>
+</html>

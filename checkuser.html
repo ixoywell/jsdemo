@@ -1,0 +1,505 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"> 
+<head> 
+<title>可爱吧</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content=",日韩流行饰品,服饰搭配,流行品牌等信息." /> 
+<meta name="keywords" content="可爱吧,美容瘦身,健体,2007年,搭配,流行,时尚,品牌,饰品,服饰搭配" /> 
+<link href="http://www.lovebars.cn/lovebars/bbs/styles/styles5.css" rel="stylesheet" type="text/css" /> 
+<script language="javascript"> 
+// 此脚本由刘海民编写 
+// 网站：http://www.szrgb.net 
+// 邮箱：lovelium@gmail.com 
+var num=5; 
+var mon1=0; 
+var mon2=0; 
+var mon3=0; 
+var mon4=0; 
+var mon5=0; 
+
+//封装得到对像ID涵数 
+function getObj(objName){return(document.getElementById(objName));} 
+
+//input得到焦点效果 
+function showare(id){ 
+        for(var i=1;i<=num;i++){ 
+        if(i==id) { 
+         getObj("sps"+i).className="reg2"; 
+    } 
+        else{ 
+
+          if(i==num || i==(id-1)){ 
+             getObj("sps"+i).className="reg1"; 
+             } 
+          else{ 
+             getObj("sps"+i).className="reg1"; 
+             } 
+         } 
+    } 
+} 
+
+//过滤 
+function RTrim(str) 
+{ 
+ var whitespace=new String(" \t\n\r"); 
+ var s=new String(str); 
+ if (whitespace.indexOf(s.charAt(s.length-1))!=-1) 
+ { 
+  var i=s.length-1; 
+  while (i>=0 && whitespace.indexOf(s.charAt(i))!=-1) 
+  { 
+   i--; 
+  } 
+    s=s.substring(0,i+1); 
+  } 
+ return s; 
+} 
+
+//过滤 
+function LTrim(str) 
+{ 
+ var whitespace=new String(" \t\n\r"); 
+ var s=new String(str); 
+ if (whitespace.indexOf(s.charAt(0))!=-1) 
+ { 
+  var j=0, i = s.length; 
+  while (j<i && whitespace.indexOf(s.charAt(j))!=-1) 
+ { 
+  j++; 
+ } 
+   s=s.substring(j,i); 
+ } 
+  return s; 
+} 
+
+function Trim(str) 
+{ 
+ return RTrim(LTrim(str)); 
+} 
+
+//邮箱验证涵数 
+function isemail(s) 
+{ 
+ var i=1; 
+ var sLength=s.length; 
+ while((i<sLength)&&(s.charAt(i)!="@")) 
+ { 
+  i++; 
+ } 
+ //不存在@返回false 
+ if((i>=sLength)||(s.charAt(i)!="@")) 
+  return false; 
+ else 
+  i+=2; 
+ //找到'.'的位置 
+ while((i<sLength)&&(s.charAt(i)!=".")) 
+ { 
+  i++; 
+ } 
+ //如果找不到. 肯定不是一个有效的Email 
+ if((i>=sLength-1)||(s.charAt(i)!=".")) 
+  return false; 
+ else 
+  return true; 
+} 
+   
+//用户名检测 
+function checkloginname() 
+{  
+
+ if (getObj("input1").value=="" || Trim(getObj("input1").value)=="") 
+ {  
+   getObj("sps1").innerHTML="<img src='images/yesno.gif' width='16' height='16' hspace='3' align='absmiddle' /><font color='#ff0000'>请输入注册用户名！</font>"; 
+
+   mon1=0; 
+  getObj("checkuserme").disabled=true; 
+   allok(); 
+   return false; 
+ }else{ 
+ if (Trim(getObj("input1").value).indexOf(" ")>=0)  
+ {  
+   getObj("sps1").innerHTML="<img src='images/yesno.gif' width='16' height='16' hspace='3' align='absmiddle' /><font color='#ff0000'>注册用户名中不能包含空格！</font>"; 
+
+   mon1=0; 
+  getObj("checkuserme").disabled=true; 
+   allok(); 
+  return false;  
+ }else{ 
+ if (Trim(getObj("input1").value).length<3)  
+ {  
+   getObj("sps1").innerHTML="<img src='images/yesno.gif' width='16' height='16' hspace='3' align='absmiddle' /><font color='#ff0000'>注册用户名不能少于3个字符！</font>"; 
+
+   mon1=0; 
+  getObj("checkuserme").disabled=true; 
+   allok(); 
+  return false;  
+ }else{ 
+ if (Trim(getObj("input1").value).length>20)  
+ {  
+   getObj("sps1").innerHTML="<img src='images/yesno.gif' width='16' height='16' hspace='3' align='absmiddle' /><font color='#ff0000'>注册用户名不能超过20个字符！</font>"; 
+
+   mon1=0; 
+  getObj("checkuserme").disabled=true; 
+   allok(); 
+  return false; 
+ }else{ 
+ getObj("sps1").innerHTML="<img src='images/yesok.gif' width='16' height='16' hspace='3' align='absmiddle' /><font color='#AED231'>用户名OK啦！但为了更好的注册希望您可以验证一下是否可用此用户名。很简单，点一下现在按钮就行啦！</font>"; 
+   mon1=1; 
+  getObj("checkuserme").disabled=false; 
+   allok(); 
+  return false; 
+} 
+} 
+} 
+} 
+} 
+
+//输入密码检测 
+function checkpassword() 
+{  
+
+ if (getObj("input2").value=="" || Trim(getObj("input2").value)=="") 
+ {  
+   getObj("sps2").innerHTML="<img src='images/yesno.gif' width='16' height='16' hspace='3' align='absmiddle' /><font color='#ff0000'>请输入注册密码！</font>"; 
+
+   mon2=0; 
+   allok(); 
+   return false; 
+ }else{ 
+ if (Trim(getObj("input2").value).indexOf(" ")>=0)  
+ {  
+   getObj("sps2").innerHTML="<img src='images/yesno.gif' width='16' height='16' hspace='3' align='absmiddle' /><font color='#ff0000'>密码中不能包含空格！</font>"; 
+
+   mon2=0; 
+   allok(); 
+  return false;  
+ }else{ 
+ if (Trim(getObj("input2").value).length<4)  
+ {  
+   getObj("sps2").innerHTML="<img src='images/yesno.gif' width='16' height='16' hspace='3' align='absmiddle' /><font color='#ff0000'>密码不能少于4个字符！</font>"; 
+
+   mon2=0; 
+   allok(); 
+  return false;  
+ }else{ 
+ if (Trim(getObj("input2").value).length>20)  
+ {  
+   getObj("sps2").innerHTML="<img src='images/yesno.gif' width='16' height='16' hspace='3' align='absmiddle' /><font color='#ff0000'>密码不能超过20个字符！</font>"; 
+
+   mon2=0; 
+   allok(); 
+  return false; 
+ }else{ 
+   getObj("sps2").innerHTML="<img src='images/yesok.gif' width='16' height='16' hspace='3' align='absmiddle' /><font color='#AED231'>密码设置OK啦！</font>";  
+   mon2=1; 
+   allok();  
+  return false; 
+} 
+ } 
+ } 
+ } 
+} 
+
+//重复输入密码检测 
+function checkreturnpass() 
+{  
+
+ if (getObj("input3").value=="" || Trim(getObj("input3").value)=="") 
+ {  
+   getObj("sps3").innerHTML="<img src='images/yesno.gif' width='16' height='16' hspace='3' align='absmiddle' /><font color='#ff0000'>请确认密码！</font>"; 
+
+   mon3=0; 
+   allok(); 
+   return false; 
+ }else{ 
+   if(getObj("input2").value!=getObj("input3").value) 
+   { 
+     getObj("sps3").innerHTML="<img src='images/yesno.gif' width='16' height='16' hspace='3' align='absmiddle' /><font color='#ff0000'>您两次输入的密码不相符！</font>" 
+
+   mon3=0; 
+   allok(); 
+     return false; 
+   }else{ 
+    getObj("sps3").innerHTML="<img src='images/yesok.gif' width='16' height='16' hspace='3' align='absmiddle' /><font color='#AED231'>您两次输入的密码十分相符！</font>" 
+   mon3=1; 
+   allok();    
+  return false;  
+} 
+} 
+} 
+
+//邮箱检测 
+function checkmyemail() 
+{  
+ if (getObj("input4").value=="" || Trim(getObj("input4").value)=="") 
+ {  
+   getObj("sps4").innerHTML="<img src='images/yesno.gif' width='16' height='16' hspace='3' align='absmiddle' /><font color='#ff0000'>请正确输入您的E-Mail地址！</font>" 
+
+   mon4=0; 
+   allok(); 
+   return false; 
+ }else{ 
+ if(!isemail(getObj("input4").value)) 
+ { 
+   getObj("sps4").innerHTML="<img src='images/yesno.gif' width='16' height='16' hspace='3' align='absmiddle' /><font color='#ff0000'>您输入的E-Mail地址无效！</font>" 
+
+   mon4=0; 
+   allok(); 
+   return false; 
+ }else{ 
+   getObj("sps4").innerHTML="<img src='images/yesok.gif' width='16' height='16' hspace='3' align='absmiddle' /><font color='#AED231'>您输入的E-Mail地址OK啦！</font>" 
+   mon4=1; 
+   allok();  
+  return false; 
+} 
+ } 
+} 
+
+//同意按钮检测 
+function chekme1(){ 
+   mon5=1; 
+   allok();  
+  return false; 
+} 
+
+function chekme2(){ 
+   mon5=0; 
+   allok();  
+  return false; 
+} 
+
+//全部检测（选部分检测） 
+function checkall(){ 
+ if (getObj("input1").value=="" || Trim(getObj("input1").value)=="") 
+  {  
+   getObj("sps1").innerHTML="<img src='images/yesno.gif' width='16' height='16' hspace='3' align='absmiddle' /><font color='#ff0000'>请输入注册用户名！</font>"; 
+   mon1=0; 
+   allok();  
+   return false; 
+   } 
+
+ if (getObj("input2").value=="" || Trim(getObj("input2").value)=="") 
+ {  
+   getObj("sps2").innerHTML="<img src='images/yesno.gif' width='16' height='16' hspace='3' align='absmiddle' /><font color='#ff0000'>请输入注册密码！</font>"; 
+   mon2=0; 
+   allok(); 
+   return false; 
+ } 
+ if (getObj("input3").value=="" || Trim(getObj("input3").value)=="") 
+ {  
+   getObj("sps3").innerHTML="<img src='images/yesno.gif' width='16' height='16' hspace='3' align='absmiddle' /><font color='#ff0000'>请确认密码！</font>"; 
+   mon3=0; 
+   allok(); 
+   return false; 
+ } 
+ if (getObj("input3").value!=getObj("input2").value) 
+ { 
+  getObj("sps3").innerHTML="<img src='images/yesno.gif' width='16' height='16' hspace='3' align='absmiddle' /><font color='#ff0000'>请确认密码正确！</font>"; 
+   mon3=0; 
+   allok(); 
+   return false; 
+  } 
+
+ if (getObj("input4").value=="" || Trim(getObj("input4").value)=="") 
+ {  
+   getObj("sps4").innerHTML="<img src='images/yesno.gif' width='16' height='16' hspace='3' align='absmiddle' /><font color='#ff0000'>请正确输入您的E-Mail地址！</font>" 
+   mon4=0; 
+   allok(); 
+   return false; 
+ } 
+} 
+
+//重要，AJAX检测检证码 
+function GetResultjishu() 
+{ 
+var maxid1; 
+var oBao1 = false; 
+/*@cc_on @*/ 
+/*@if (@_jscript_version >= 5) 
+try { 
+  oBao1 = new ActiveXObject("Msxml2.XMLHTTP"); 
+} catch (e) { 
+  try { 
+    oBao1 = new ActiveXObject("Microsoft.XMLHTTP"); 
+  } catch (e2) { 
+    oBao1 = false; 
+  } 
+} 
+@end @*/ 
+if (!oBao1 && typeof XMLHttpRequest != 'undefined') { 
+  oBao1 = new XMLHttpRequest(); 
+} 
+oBao1.open("POST","readseion.asp",false); 
+oBao1.setRequestHeader("Content-Type","application/x-www-form-urlencoded") 
+oBao1.send(); 
+//服务器端处理返回的是经过escape编码的字符串. 
+maxid1 = unescape(oBao1.responseText); 
+getObj("mycode").innerHTML=maxid1; 
+//document.getElementById("showf").innerHTML=maxid1; 
+} 
+
+
+//检测验证码 
+function checkcode(){ 
+    GetResultjishu(); 
+if (getObj("yanzheng").value=="" || Trim(getObj("yanzheng").value)=="") 
+ {  
+   getObj("sps5").innerHTML="<img src='images/yesno.gif' width='16' height='16' hspace='3' align='absmiddle' /><font color='#ff0000'>请正确输入验证码！</font>" 
+   return false; 
+ }else{ 
+    if (getObj("mycode").innerHTML==Trim(getObj("yanzheng").value)) 
+ {  
+ getObj("sps5").innerHTML="<img src='images/yesok.gif' width='16' height='16' hspace='3' align='absmiddle' /><font color='#AED231'>验证码正确啦！</font>" 
+ }else 
+ { 
+  getObj("sps5").innerHTML="<img src='images/yesno.gif' width='16' height='16' hspace='3' align='absmiddle' /><font color='#ff0000'>请正确输入验证码！</font>"  
+   return false; 
+ } 
+ } 
+} 
+
+//用户名检测 
+function myuser(){ 
+var pageId=getObj("input1").value; 
+/* 
+*--------------- GetResult() ----------------- 
+* GetResult() 
+* 功能:通过XMLHTTP发送请求,返回结果. 
+*--------------- GetResult() ----------------- 
+*/ 
+/* Create a new XMLHttpRequest object to talk to the Web server */ 
+var oBao = false; 
+/*@cc_on @*/ 
+/*@if (@_jscript_version >= 5) 
+try { 
+  oBao = new ActiveXObject("Msxml2.XMLHTTP"); 
+} catch (e) { 
+  try { 
+    oBao = new ActiveXObject("Microsoft.XMLHTTP"); 
+  } catch (e2) { 
+    oBao = false; 
+  } 
+} 
+@end @*/ 
+if (!oBao && typeof XMLHttpRequest != 'undefined') { 
+  oBao = new XMLHttpRequest(); 
+} 
+//特殊字符：+,%,&,=,?等的传输解决办法.字符串先用escape编码的. 
+//Update:2004-6-1 12:22 
+    var userInfoo = "pageid="+pageId; 
+    oBao.open("POST","checkuser.asp",false); 
+    oBao.setRequestHeader("Content-Type","application/x-www-form-urlencoded") 
+    oBao.send(userInfoo); 
+//服务器端处理返回的是经过escape编码的字符串. 
+var strResult = unescape(oBao.responseText); 
+//将字符串分开. 
+if (strResult==getObj("input1").value){ 
+getObj("sps1").innerHTML="<img src='images/yesno.gif' width='16' height='16' hspace='3' align='absmiddle' /><font color='#ff0000'>不行啦，有重名啦Q！</font>"; 
+mon1=0; 
+allok(); 
+return false; 
+}else{ 
+getObj("sps1").innerHTML="<img src='images/yesok.gif' width='16' height='16' hspace='3' align='absmiddle' /><font color='#AED231'>用户名OK啦！可以进行下步啦！</font>"; 
+mon1=1; 
+allok(); 
+return false; 
+} 
+} 
+
+//修改验证码 
+function changecode(){ 
+    myc.location.href="tocod.asp"; 
+} 
+
+//发送扭钮状态检测 
+function allok(){ 
+  if (mon1==1&&mon2==1&&mon3==1&&mon4==1&&mon5==1){ 
+getObj("Submit").disabled=false; 
+}else{ 
+getObj("Submit").disabled=true; 
+} 
+} 
+
+//复位 
+function resetall(){ 
+  for(var i=1;i<=4;i++){ 
+  getObj("input"+i).value=""; 
+  } 
+  getObj("yanzheng").value=""; 
+  getObj("acctiveme").checked=false; 
+  getObj("sps1").className="reg1"; 
+  getObj("sps1").innerHTML="3～20个合法字符(包括大小写字母、数字、下划线、中文)，一旦注册成功用户名不能修改。"; 
+  getObj("sps2").className="reg1"; 
+  getObj("sps2").innerHTML="密码区分大小写，4～20个合法字符组成，请尽量使用英文字母加数字或符号的组合密码。"; 
+  getObj("sps3").className="reg1"; 
+  getObj("sps3").innerHTML="请再输入一遍您上面输入的密码。"; 
+  getObj("sps4").className="reg1"; 
+  getObj("sps4").innerHTML="E-mail非常重要！这是我们与您联系的首选方式，以及接收我们的服务和取回密码的途径，请务必填写真实，并确认是您最常用的电子邮件。"; 
+  getObj("sps5").className="reg1"; 
+  getObj("sps5").innerHTML="请输入您的验证码!"; 
+  getObj("checkuserme").disabled=true; 
+mon1=0; 
+mon2=0; 
+mon3=0; 
+mon4=0; 
+mon5=0; 
+allok(); 
+} 
+
+//有趣的功能，刷新页面时调用些涵数 
+function chefirst(){ 
+ if (getObj("input1").value!="" || getObj("input2").value!="" || getObj("input3").value!="" || getObj("input4").value!="" || getObj("yanzheng").value!=""){ 
+checkloginname(); 
+checkpassword(); 
+checkreturnpass(); 
+checkmyemail(); 
+checkcode(); 
+return false; 
+}else{ 
+return false; 
+} 
+} 
+</script> 
+</head> 
+
+<body onload="return chefirst()"> 
+<div id="mainbodytop"></div> 
+<div id="loginclss"><form name="theForm" action="addusers.asp" method="post" onsubmit="return checkall()"> 
+<p class="tishi"><font color="#0033CC"><b>女人沙龙注册步骤</b></font>-<font color="#FF6600">注册社区ID</font> >>  进入社区</p> 
+<dl class="biao"> 
+<dt><span>注册登陆名： 
+  <input name="loginname" type="text" id="input1" onfocus="showare(1)" onblur="return checkloginname()" /> 
+</span><span class="reg1" id="sps1">3～20个合法字符(包括大小写字母、数字、下划线、中文)，一旦注册成功用户名不能修改。</span> 
+</dt> 
+<dd> 
+  <input type="image" id="checkuserme" src="images/checkname.jpg" onclick="return myuser()" name="Submit3" value="提交" disabled/> 
+  </dd> 
+<dd>接受相关协议： 
+  <input name="acctiveme" type="radio" id="acctiveme" value="yes" onclick="chekme1()" />  
+  接受 
+  <input type="radio" name="acctiveme" id="acctiveme" onclick="chekme2()" value="no" />  
+  不接受 <a href="readgeze.html" target="_blank" class="toplink">相关协议</a> </dd> 
+<dt><span>注册密码： 
+  <input name="password" type="text" id="input2" onfocus="showare(2)"  onblur="return checkpassword()"/> 
+</span><span class="reg1" id="sps2">密码区分大小写，4～20个合法字符组成，请尽量使用英文字母加数字或符号的组合密码。</span> 
+</dt> 
+<dt><span>重复密码： 
+  <input name="returnpass" type="text" id="input3" onfocus="showare(3)"  onblur="return checkreturnpass()"/> 
+</span><span class="reg1" id="sps3">请再输入一遍您上面输入的密码。</span> 
+</dt> 
+<dt><span>电子邮件： 
+  <input name="myemail" type="text" id="input4" onfocus="showare(4)"  onblur="return checkmyemail()"/> 
+</span><span class="reg1" id="sps4">E-mail非常重要！这是我们与您联系的首选方式，以及接收我们的服务和取回密码的途径，请务必填写真实，并确认是您最常用的电子邮件。</span> 
+</dt> 
+<dd><span>验 证 码： 
+  <input name="yanzheng" type="text" id="yanzheng"  onfocus="showare(5)" size="5" onblur="checkcode()" />  <iframe scrolling="no" id="myc" frameborder="0" marginheight="0" marginwidth="0" vspace="0" hspace="0" width="60" height="15" src="tocod.asp"></iframe> 
+  <img src="images/changecode.gif" style="cursor:pointer " onclick="changecode()" width="37" height="16" /></span><span class="reg1" id="sps5">请输入您的验证码!</span><font id="mycode" style="display:none ">d</font> 
+</dd> 
+<dt style="text-align:center "> 
+  <input type="submit" id="Submit" name="Submit" value=" 提 交 " disabled /> 
+  <input type="reset" name="Submit2" onclick="resetall()" value=" 重 置 " /> 
+</dt> 
+</dl> 
+</form> 
+</body> 
+</html> 

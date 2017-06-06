@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>target-div</title>
+    <script src="http://cdn.bootcss.com/clipboard.js/1.5.9/clipboard.min.js"></script>
+</head>
+<body>
+<div id="msg">妈，我复制成功了。可以回家吃饭了</div>
+<button class="btn" data-clipboard-action="copy" data-clipboard-target="#msg">Copy</button>
+<!-- data-clipboard-target对应的是标签的id，则使用data-clipboard-target="#xttblog" -->
+<script>
+    var clipboard = new Clipboard('.btn');
+    clipboard.on('success', function(e) {
+        console.log(e);
+        // 复制成功,取消选择
+        e.clearSelection();
+    });
+    clipboard.on('error', function(e) {
+        console.log(e);
+    });
+    // 如果需要动态销毁
+    clipboard.destroy();
+</script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>记住用户名密码</title>
+		<!--<script src="/js/jquery-1.7.2.min.js" type="text/javascript"></script>-->
+		<!--<script src="/js/jquery.cookie.js" type="text/javascript"></script>-->
+		<script type="text/javascript">
+		//页面加载时，查找用户
+//document.ready
+window.onload = function onPageLoad() {
+
+	var userName = getCookies("username");
+	if (typeof(userName) != "undefined" && userName != null && userName != "") {
+		$("#username").val(userName);
+	}
+	var usernameObj = document.getElementById("nameSave");
+	if (userName) {
+		usernameObj.checked = true;
+	} else {
+		usernameObj.checked = false;
+		resetCookie();
+	}
+}
+
+//获取cookie的值
+function getCookies(cookieKey) {
+
+	var cookies = document.cookie ? document.cookie.split('; ') : [];
+	for (var i = 0, l = cookies.length; i < l; i++) {
+		var parts = cookies[i].split('=');
+		if (parts.length > 1) {
+			if (parts[0] == cookieKey) {
+				//username1=; 
+				return parts[1];
+			}
+		}
+	}
+	return '';
+}
+//写入到Cookie
+function setCookie(name, value, expires) {
+
+	var argv = arguments;
+	var argc = arguments.length;
+	var expires = (argc > 2) ? argv[2] : null;
+	document.cookie = name + "=" + escape(value) + ((expires == null) ? "" : ("; expires=" + expires.toGMTString()));
+};
+
+
+
+//删除cookie
+function resetCookie() {
+	var expdate = new Date();
+	setCookie("username", null, expdate);
+}
+
+
+
+// 点击登录，密码验证通过时调用,保存用户和密码的cookies
+
+function setUsename(username) {
+
+	//取用户名 
+	var usr = username;
+	//如果记住密码选项被选中
+
+	var isCheck = document.getElementById("nameSave").checked;
+	if (isCheck == true) {
+		//设置过期时间为2周
+		var expdate = new Date();
+		expdate.setTime(expdate.getTime() + 14 * (24 * 60 * 60 * 1000));
+		//将用户名和密码写入到Cookie 
+		setCookie("username", usr, expdate);
+	} else {
+		//如果没有选中记住密码,则立即过期，即删除Cookies
+		resetCookie();
+	}
+}</script>
+	</head>
+
+	<body>
+		<div>
+			用户名：
+			<input type="text" id="username" name="username"/>
+			<br /> 密码：
+			<input type="text" id="password" name="password"/>
+			<br />
+			<input type="checkbox" id="nameSave" />记住用户名和密码
+			<br />
+			<input type="submit" id="sub" value="登录"/>
+		</div>
+	</body>
+
+</html>

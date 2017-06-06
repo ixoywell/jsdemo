@@ -1,0 +1,131 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>orientationChange</title>
+    <style>
+        .bg-f02010 {background: #f02010}
+        .portrait body div { width: 10%; }
+        .landscape body div { width: 15%; }
+        @media all and (orientation: portrait) {
+            body div { width: 10%; }
+        }
+
+        @media all and (orientation: landscape) {
+            body div { width: 15%; }
+        }
+    </style>
+<script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+    var orin = typeof window.orientation+"  "+typeof window.onorientationchange;
+   // document.write(orin);
+    var supportsOrientation = (typeof window.orientation == 'number' && typeof window.onorientationchange == 'object');
+  //  var HTMLNode = document.body.parentNode;
+
+    // 判断屏幕是否旋转
+    function orientationChange() {
+        if(supportsOrientation){
+            var orientation = window.orientation;
+            switch(orientation) {
+                case 0:
+                    //document.write("肖像模式 0,screen-width: " + screen.width + "; screen-height:" + screen.height);
+                    alert("肖像模式 0,screen-width: " + screen.width + "; screen-height:" + screen.height);
+                    orientation = 'landscape';
+                    break;
+                case -90:
+                    alert("左旋 -90,screen-width: " + screen.width + "; screen-height:" + screen.height);
+                    orientation = 'portrait';
+                    break;
+                case 90:
+                    alert("右旋 90,screen-width: " + screen.width + "; screen-height:" + screen.height);
+                    break;
+                case 180:
+                    alert("风景模式 180,screen-width: " + screen.width + "; screen-height:" + screen.height);
+                    break;
+              //  default :
+                //    orientation = 'portrait';
+            };
+        //    HTMLNode.setAttribute('class', orientation);
+        }else{
+            // landscape when width is biggest, otherwise portrait
+            var orientation = (window.innerWidth > window.innerHeight) ? 'landscape': 'portrait';
+
+            // set the class on the HTML element (i.e. )
+         //   HTMLNode.setAttribute('class', orientation);
+        }
+
+    };
+    // 添加事件监听
+    addEventListener('load', function(){
+        orientationChange();
+        window.onorientationchange = orientationChange;
+    });
+    /*
+    $(document).ready(function () {
+        $(window).on('orientationchange', function() {
+            var $el = $("#el"); // 需要重新获得宽和高的元素
+            var newWidth = $el.width(); // 新的宽
+            var newHeight = $el.height(); // 新的高
+            $el.html(newHeight+" "+newWidth);
+        });
+    });*/
+
+    //判断屏幕旋转,加载不同样式
+
+    /*
+    (function(){
+        var supportsOrientation = (typeof window.orientation == 'number' && typeof window.onorientationchange == 'object');
+        var HTMLNode = document.body.parentNode;
+        var updateOrientation = function() {
+            // rewrite the function depending on what's supported
+            if(supportsOrientation) {
+                updateOrientation = function() {
+                    var orientation = window.orientation;
+
+                    switch(orientation) {
+                        case 90: case -90:
+                        orientation = 'landscape';
+                        break;
+                        default:
+                            orientation = 'portrait';
+                    }
+
+                    // set the class on the HTML element (i.e. )
+                    HTMLNode.setAttribute('class', orientation);
+                }
+            } else {
+                updateOrientation = function() {
+                    // landscape when width is biggest, otherwise portrait
+                    var orientation = (window.innerWidth > window.innerHeight) ? 'landscape': 'portrait';
+
+                    // set the class on the HTML element (i.e. )
+                    HTMLNode.setAttribute('class', orientation);
+                }
+            }
+
+            updateOrientation();
+        }
+        var init = function() {
+            // initialize the orientation
+            updateOrientation();
+
+            if(supportsOrientation) {
+                window.addEventListener('orientationchange', updateOrientation, false);
+            } else {
+                // fallback: update every 5 seconds
+                setInterval(updateOrientation, 5000);
+            }
+
+        }
+        window.addEventListener('DOMContentLoaded', init, false);
+    })();
+    */
+
+</script>
+</head>
+<body id="el">
+    <div class="bg-f02010">
+
+    </div>
+</body>
+</html>

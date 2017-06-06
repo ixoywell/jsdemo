@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<article style="width: 300px; height:1200px"></article>
+		<script>
+		function getInfo()
+            {
+                var s = "";
+                s += "\n 网页可见区域宽："+ document.body.clientWidth;
+                s += "\n 网页可见区域高："+ document.body.clientHeight;
+                s += "\n 网页可见区域宽："+ document.body.offsetWidth + " (包括边线和滚动条的宽)";
+                s += "\n 网页可见区域高："+ document.body.offsetHeight + " (包括边线的宽)";
+                s += "\n 网页正文全文宽："+ document.body.scrollWidth;
+                s += "\n 网页正文全文高："+ document.body.scrollHeight;
+                s += "\n 网页被卷去的高(ff)："+ document.body.scrollTop;
+                s += "\n 网页被卷去的高(ie)："+ document.documentElement.scrollTop;
+                s += "\n 网页被卷去的左："+ document.body.scrollLeft;
+                s += "\n 网页正文部分上："+ window.screenTop;
+                s += "\n 网页正文部分左："+ window.screenLeft;
+				s += "\n 浏览器窗口的高："+ window.innerHeight;
+                s += "\n 浏览器窗口的宽："+ window.innerWidth;
+                s += "\n 屏幕分辨率的高："+ window.screen.height;
+                s += "\n 屏幕分辨率的宽："+ window.screen.width;
+                s += "\n 屏幕可用工作区高度："+ window.screen.availHeight;
+                s += "\n 屏幕可用工作区宽度："+ window.screen.availWidth;
+                s += "\n 你的屏幕设置是 "+ window.screen.colorDepth +" 位彩色";
+                s += "\n 你的屏幕设置 "+ window.screen.deviceXDPI +" 像素/英寸";
+                //s += "\n article的高度 "+ $('article').height();
+
+              	alert (s);
+            }
+            window.onload=getInfo;
+</script>
+	</body>
+</html>

@@ -1,0 +1,55 @@
+<html>
+<head>
+<script type="text/javascript">
+function getCookie(c_name){
+	if (document.cookie.length>0){ 
+		c_start=document.cookie.indexOf(c_name + "=");
+		if (c_start!=-1){ 
+			c_start=c_start + c_name.length+1;
+			c_end=document.cookie.indexOf(";",c_start);
+		}
+		if (c_end==-1) {
+			c_end=document.cookie.length;
+			return unescape(document.cookie.substring(c_start,c_end));
+		} 
+	}	
+	return ""
+}
+
+function setCookie(c_name,value,expiredays){
+	var exdate=new Date();
+	exdate.setDate(exdate.getDate()+expiredays);
+	document.cookie=c_name+ "=" +escape(value)+((expiredays==null) ? "" : "; expires="+exdate.toGMTString());
+	//alert("设置了cookie")
+}
+
+function checkCookie(){
+	username=getCookie('username');
+	if (username!=null && username!="" && username!="undefined"){
+		//console.log(username+"ewerwe");
+  		alert('Welcome again '+username+'!');
+  	} else {
+  		username=prompt('Please enter your name:',"");
+  		
+  		if (username!=null && username!=""){
+    		setCookie('username',username,365);
+    	}
+    	
+    	//saveCookie('username');
+  	}
+}
+function saveCookie(str){
+	var name = document.getElementById("name").value;
+	if(document.getElementById('chkRemember').checked == true && name!=null && name!=""){		
+		setCookie(str,name,365);
+		alert(name);
+	}
+}
+</script>
+</head>
+<body onLoad="checkCookie()">
+	<input id="name" type="text" name="username"/>
+	<input id="chkRemember" type="checkbox" checked="checked"/>记住密码
+	<input type="button" value="登录" onclick="saveCookie('username')"/>
+</body>
+</html>

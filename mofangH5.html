@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>微品金融</title>
+
+<!-- Set render engine for 360 browser -->
+<meta name="renderer" content="webkit">
+
+<!-- No Baidu Siteapp-->
+<meta http-equiv="Cache-Control" content="no-siteapp"/>
+<!-- Add to homescreen for Chrome on Android -->
+<meta name="mobile-web-app-capable" content="yes">
+
+<!-- Add to homescreen for Safari on iOS -->
+<meta name="apple-mobile-web-app-capable" content="yes" />    
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="www.vpfinance.cn"/>
+
+<meta name="format-detection" content="telephone=yes"/>
+<meta name="msapplication-tap-highlight" content="no" />
+
+<link rel="stylesheet" href="css/page.css" type="text/css" /> 
+<!-- Link Swiper's CSS -->
+<link rel="stylesheet" href="css/swiper.3.1.2.min.css">
+</head>
+<body>
+<!--投资框-->
+<div class="buy-box">
+	<div class="other-cz buy-cen clearfix">
+		<span id="close-buy">
+			<img src="img/close.png"/>
+		</span>
+		<a href="tel:12345678900">
+			<img src="img/tel-ico.png"/>
+		</a>
+	</div>
+	<div class="buy-cen buy-title">
+		<h3>V生活-魔方-001</h3>
+		<p>选择收益组合:</p>
+	</div>
+	<div class="zh buy-cen">				
+		<span class="txt-js">接受</span>
+		<span class="tick">
+			<img src="img/tick.png"/>
+		</span>
+		<div class="zh-con">
+			<h3 class="zh-name">收益A</h3>
+			<p>固定收益9%（年化）投资者可享有投资金额年化9%的利息收益 </p>
+		</div>
+	</div>
+	<div class="zh buy-cen">
+		<span class="txt-js">接受</span>
+		<span class="tick">
+			<img src="img/tick.png"/>
+		</span>
+		<div class="zh-con">
+			<h3 class="zh-name">收益B</h3>
+			<p>固定收益5%+600租金券（年化）投资者可享有投资金额年化5%的利息收益。
+同时可享有租金抵用券。每投资一万元返还150元魔方公寓租金券（相当于年
+化6%）未满万元部分不返券。该券以短信校验码的形式，于标的结束后发放。 </p>
+		</div>
+	</div>
+	<div class="buy-cen in-much">
+		<input id="much" type="text" name="much" placeholder="可用余额为100,000.00 "/>
+		<span id="all-buy" onclick="">全额购买</span>
+	</div>
+	<div class="buy-cen agree-protocol">
+			<input class="agree" type="checkbox" name="agree"/>
+			<p>是否使用代金券抵扣</p>
+	</div>
+	<div class="buy-cen agree-protocol">
+			<input class="agree" type="checkbox" name="agree"/>
+			<p>同意<a class="protocol" href="#">《微品金融协议》</a></p>
+	</div>
+	<div class="mf-buy-btn">
+  		<a href="#" id="mf-buy">立即投资</a>
+	</div>
+</div>	
+<article>
+<!--头部标题-->
+<header class="p-header">
+    <!--<a href="#" class="p-h-back"></a>-->
+    <p>微品金融</p>
+</header>
+<!--加入 start-->
+<div class="mf-buy">
+  <a href="#" id="mf-buybuttom">2015年10月18日即将开放</a>
+</div>
+<!-- Swiper -->
+<div class="swiper-container">
+	<div class="swiper-wrapper">
+		<div class="swiper-slide"><img src="img/mf-title-img.jpg" /></div>
+		<div class="swiper-slide"><img src="img/mf-title-img.jpg" /></div>
+		<div class="swiper-slide"><img src="img/mf-title-img.jpg" /></div>
+	</div>
+	<!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+</div>
+<div class="mf-item-title clearfix bg-fff">
+	<div class="mf-item-name">V生活-魔方-001</div>
+	<div class="item-time">
+		<p><i id="t_d">00</i>天<i id="t_h">00</i>时<i id="t_m">00</i>分<i id="t_s">00</i>秒</p>
+		<span></span>
+	</div>
+	 <div class="progressBar"><div id="bar"></div></div>
+</div>
+<div class="mf-number clearfix">
+	<div class="num-people f_le">
+		<h2>200万</h2>
+		<p>标的总额</p>
+	</div>
+	<div class="num-people f_le">
+		<h2>200万</h2>
+		<p>可投余额</p>
+	</div>
+	<div class="num-money f_rig">
+		<h2>3个月</h2>
+		<p>投资期限</p>
+	</div>
+</div>
+<div class="mf-canshu bg-fff clearfix">
+    <div class="mf-cs-box">投资收益</div>
+    <div class="right-box">
+	    <div class="mf-cs-info">
+	        <span class="mf-cs-btit f_le">组合A</span>
+	        <span class="mf-cs-bdes f_rig other-bdes">固定收益9%</span>
+	    </div>
+	    <div class="mf-cs-info">
+	        <span class="mf-cs-btit f_le">组合B</span>
+	        <span class="mf-cs-bdes f_rig" style="line-height: 20px; margin-top: 10px;">固定收益5%<br/>+产品服务 (租金券)</span>
+	    </div>
+    </div>
+    <div class="mf-hk-box">还款方式</div>
+    <div class="hk-right-box">
+	    <div class="mf-hk-info">
+	        <span class="mf-cs-bdes f_rig">到期一次性还本付息</span>
+	    </div>
+    </div>
+</div>
+
+<div class="mf-main bg-fff">
+    <div class="mf-mtab clearfix" id="pro-p-positit">
+        <a href="javascript:;" class="f_le mtab mtab1 mtab-on" data-divshow="0">关于魔方</a>
+        <a href="javascript:;" class="f_le mtab mtab2" data-divshow="1">项目资料</a>
+        <a href="javascript:;" class="f_le mtab mtab3" data-divshow="2">投资记录</a>
+    </div>
+    <div class="mf-mtabmain">
+        <!--详情 start-->
+        <div class="mtab-main-box" >
+        	<div class="mf-con-fir">
+        		<img src="img/mf-txt-img1.jpg">
+        	</div>
+        	<div class="mf-con-img">
+        		<img src="img/mf-con-img1.jpg">
+        	</div>
+        	<div class="mf-logo">
+        		<img src="img/mf-logo.png">
+        	</div>
+	        <div class="mf-con-txt">
+	            <p>双重回购中式连锁长租公寓运营商</p>
+				<p>中高端精品住宅、完善的配套服务</p>
+				<p>全国80多家门店</p>
+				<p>近2万多名租户</p>
+				<p>获美国华平2亿美元投资</p>
+	        </div>
+	        <div class="mf-con-img">
+        		<img src="img/mf-con-img2.png">
+        	</div>
+        	<div class="mf-con-txt">
+	            <p>家具电器配套齐全，24小时中央热水供应</p>
+				<p>独立卫浴、独立开放式厨房，完善的安保系统</p>
+	        </div>
+	        <div class="mf-con-title">
+        		<img src="img/mf-txt-img2.png">
+        	</div>
+			<div class="mf-con-img">
+        		<img src="img/mf-con-img3.jpg">
+        	</div>
+        	<div class="mf-con-txt">
+	            <p>家乐福、华润万家（欢乐颂）、沃尔玛、天虹是标配，</p>
+				<p>800米就是地铁1号线，公交线路可覆盖深圳主要路段，出行太便利</p>
+	        </div>
+	        <div class="mf-con-title">
+        		<img src="img/mf-txt-img3.png">
+        	</div>
+        	<div class="mf-con-img">
+        		<img src="img/mf-con-img4.png">
+        	</div>
+        	<div class="mf-con-txt">
+	            <p>魔方公寓将会定期举办各种活动
+</p>
+				<p>嘉年华、脱单趴、吐槽会、万圣节PARTY……最好的邻居就在这里</p>
+	        </div>
+	        <div class="mf-con-title">
+        		<img src="img/mf-txt-img4.png">
+        	</div>
+        	<div class="mf-con-img">
+        		<img src="img/mf-con-img5.png">
+        	</div>
+        	<div class="mf-con-txt">
+	            <p>微品金融和魔方公寓跨界合作
+</p>
+				<p>乐享理财带来的财富升值，还能拿到代金券</p>
+	        </div>
+	        <div class="mf-con-title">
+        		<img src="img/mf-txt-img5.png">
+        	</div>
+        	<div class="mf-con-img mf-con-title-end ">
+        		<img src="img/mf-txt-img6.png">
+        	</div>
+        </div>
+        <!--详情 end-->
+        
+        <!--项目资料 start-->
+        <div class="mtab-main-box" style="display:block">
+        	<div class="data-info">
+        		<div class="data-title">
+        			<h3>项目定位</h3>
+        			<p>（高端/中高端/经济型定位产品）</p>
+        		</div>
+        		<div class="data-con-add">
+        			<p>项目卖点：  温馨精致的高端公寓</p>
+        			<p class="p-long-a">目标客户：  <p class="p-long">28-40岁之间，周边科技园片区、前海片区中高层管理人员以及周边银行、公务人员、个体户、高级白领。</p> </p>
+					<p>产品标准：  舒适型公寓 </p>
+					<p>主题风格：  时尚精致 </p>
+					<p>招租价格：  2400-4800元</p> 
+					<p>招租范围：  五公里范围内 </p>
+					<p>总客房数：  60间</p>
+        			<p>客房面积：  15-30平米</p>
+        		</div>
+        	</div> 
+        	<div class="data-info">
+        		<div class="data-title">
+        			<h3>产品优势</h3>
+        		</div>
+        		<div class="data-con">
+        			<div>
+        				<span>收益可观</span>
+        				<p>综合收益最高可达11%，达到余额宝的3.65倍，银行定
+期存款的5.5倍</p>
+        			</div>
+        			<div>
+        				<span>方式灵活</span>
+        				<p>关注资金收益的用户，可选择高收益方式；对租房有需
+求的用户，可选择资金收益加租金券的方式。</p>
+        			</div>
+        			<div>
+        				<span>流动性强</span>
+        				<p>产品期限为6个月，但2个月后可进行债权转让。</p>
+        			</div>
+        			<div>
+        				<span>风险可控</span>
+        				<p>借款人为国内长租公寓的龙头企业，项目风险基本可控。</p>
+        			</div>
+        		</div>
+        	</div>
+        	<div class="data-info">
+        		<div class="data-title">
+        			<h3>项目信息</h3>
+        		</div>
+        		<div class="data-con">
+        			<div>
+        				<span>核心地段</span>
+        				<p>项目位于南山区学府路168号，南山老中心区，临近科技园及前海片区，白领首选。</p>
+        			</div>
+        			<div>
+        				<span>交通便利</span>
+        				<p>项目在双地铁中间（1号线及11号线），而且公交路线众多可覆盖深圳各区主要地段。 </p>
+        			</div>
+        			<div>
+        				<span>配套完善</span>
+        				<p>项目附近具有大型超市有：家乐福超市、华润万家（欢乐颂）、沃尔玛超市、天虹商场，南贸市场（大型肉菜市场），生活配套方便、齐全。</p>
+        			</div>
+        			<div>
+        				<span>环境宜居</span>
+        				<p>周边环境优雅、安静，适合长期居住。</p>
+        			</div>
+        			<div>
+        				<span>价格合理</span>
+        				<p>周边的一室一厅供不应求，出租价格较高，魔方集团定价公道合理。</p>
+        			</div>
+        		</div>
+        	</div>
+        	<div class="data-info">
+        		<div class="data-title">
+        			<h3>风险控制</h3>
+        		</div>
+        		<div class="data-con">
+        			<div>
+        				<span>担保方式</span>
+        				<p>由魔方集团总部为本项目提供连带责任担保。</p>
+        			</div>
+        			<div>
+        				<span>资金用途</span>
+        				<p>魔方公寓学府路门店装修款。</p>
+        			</div>
+        			<div>
+        				<span>还款来源</span>
+        				<ul>
+        					<li>第一还款来源<br />借款人稳定的租金收入，可保障项目的第一还款来源稳定可靠；</li>
+        					<li>第二还款来源，<br />借款人充足的现金流可为还款提供第二重保障；</li>
+        					<li>第三还款来源，<br />魔方公寓总公司为门店的借款提供无限责任担保。</li>
+        				</ul>
+        			</div>
+        		</div>
+        	</div>
+        	<div class="mf-con-img mf-con-title-end ">
+        		<img src="img/mf-txt-img6.png">
+        	</div>
+        </div>
+        
+        <!--投资记录 start-->
+        <div class="mtab-main-box m-record-box">
+            <p class="mtab-total">现有60人投资,共投标 792100.00 元</p>
+            <div class="m-recordtit clearfix">
+               <span class="m-rec-span m-rec-user f_le">用户</span>
+               <span class="m-rec-span m-rec-money f_le">投标金额(元)</span>
+               <span class="m-rec-span m-rec-djq f_le">代金券</span>
+               <span class="m-rec-span m-rec-time f_le">投标时间</span>
+            </div>
+            <!--列表 start-->
+            <div class="m-record-txt">
+                <div class="m-recordbox clearfix">
+                   <span class="m-recb-span m-recb-user f_le">135*******84</span>
+                   <span class="m-recb-span m-recb-money f_le">150,000</span>
+                   <span class="m-recb-span m-recb-djq f_le">50</span>
+                   <span class="m-recb-span m-recb-time f_le">2015.08.17</span>
+                </div>
+            </div>
+            <!--列表 end-->
+            <div class="loader"></div>
+            <div class="m-record-more">加载更多...</div>
+        </div>
+        <!--投资记录 end-->
+    </div>
+</div>
+<!--详情 end-->
+
+<!--底部 start-->
+<footer class="footer">
+    <a href="tel:400-808-3900">客服热线</a>
+  	 <!--<a href="javascript:;"  class="button" onClick="new Function(demo_tel.innerHTML)();">客服热线</a>-->
+   	<a href="followus.html">关注我们</a>
+   	<a href="app.html">App下载</a>
+</footer>
+<!--底部 end-->
+</article>
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/swiper.3.1.2.min.js" ></script>
+<script type="text/javascript" src="js/buybox.js" ></script>
+<script type="text/javascript" src="js/countdown.js" ></script>
+<script type="text/javascript">
+$(function() {
+	//选项卡js
+	$(".mf-mtab .mtab").click(function() {
+		var j = $(this).attr("data-divshow");
+		$(".mf-mtabmain .mtab-main-box").eq(j).fadeIn().siblings(".mtab-main-box").hide();
+		$(this).addClass("mtab-on").siblings(".mtab").removeClass("mtab-on");
+	});
+
+	//加载更多js
+	var liHeight = $('.m-record-txt .m-recordbox').height() + 1;
+	var count = $('.m-record-txt .m-recordbox').length;
+	var dheight = liHeight * 5;
+	var allheight = liHeight * count;
+	var n = 1;
+	$('.m-record-more').click(function() {
+		$('.loader').animate({
+			'display': 'block',
+			'opacity': 1
+		}, 200, function() {
+			n++;
+			/*alert("box一个高度"+liHeight)
+			alert("box个数"+count)
+			alert("总高度"+allheight)
+			alert("增加后的总高度"+allheight)*/
+			h = dheight * n;
+			if (h > allheight) {
+				$('.m-record-more').hide();
+			}
+			$('.m-record-txt').css("height", "auto");
+			//$('body').animate({scrollTop: $elem.height()},500); 
+			//$('.m-record-txt').height(h);
+			$('.loader').css({
+				'display': 'none',
+				'opacity': 0
+			});
+		})
+	})
+
+	/*固定div顶部*/
+	var mt = 0;
+	window.onload = function() {
+		var mydiv = document.getElementById("pro-p-positit");
+		var mt = mydiv.offsetTop;
+		window.onscroll = function() {
+			var t = document.documentElement.scrollTop || document.body.scrollTop;
+			if (t > mt) {
+				mydiv.style.position = "fixed";
+				mydiv.style.margin = "0";
+				mydiv.style.top = "0";
+			} else {
+				mydiv.style.margin = "0px 0";
+				mydiv.style.position = "static";
+			}
+		}
+	}
+
+})
+
+var total = 2000000;//投标总金额
+var now_sum=400000; //已投金额
+
+var persent=now_sum/total*100+"%";
+//alert(persent);
+document.getElementById("bar").style.width=persent;
+var buy= document.getElementById("mf-buybuttom");
+if(now_sum>total){
+	buy.innerHTML="招标已结束";
+	buy.style.background="rgba(0,0,0,.8)";
+}
+
+var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        loop : true,
+        paginationClickable: '.swiper-pagination',
+    });
+</script>
+</body>
+</html>
