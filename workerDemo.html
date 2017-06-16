@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>倒计时</title>
+</head>
+<body>
+    <div id="haorooms">60</div>
+
+    <script>
+	//Blob对象除了存放二进制数据外还可以设置这个数据的MINE类型，这相当于对文件的储存，其它很多二进制对象也是从这个对象继承的。
+	 var blob = new Blob(["onmessage = function(event){var num = event.data;var T = setInterval(function(){self.postMessage(--num);if(num <= 0){clearInterval(T);self.close();}}, 1000);}"]);  
+  
+    // Obtain a blob URL reference to our worker 'file'.  
+    var blobURL = window.URL.createObjectURL(blob);  
+	
+    var haorooms = document.getElementById('haorooms');
+    //var w = new Worker('js/counter.js');//需跨域访问
+    var w = new Worker(blobURL);
+    w.postMessage(60);
+    w.onmessage = function(event){
+        haorooms.innerHTML = event.data;
+    }
+
+    </script>
+</body>
+</html>

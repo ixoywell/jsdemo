@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<title>原生JS英文时间日期插件 Pikaday.js - 素材家园（www.sucaijiayuan.com）</title>
+<link rel="stylesheet" href="css/pikaday.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<center>
+<br/><br/><br/>
+<h3>基础例子</h3>
+<input type="text" id="datepicker">
+</center>
+<br/><br/><br/>
+<div class="demo-container">
+	<h3>更多例子</h3>
+	<ul>
+    	<li><a href="amd.html">AMD</a></li>
+        <li><a href="bound-container.html">bound-container</a></li>
+        <li><a href="calendars.html">calendars</a></li>
+        <li><a href="container.html">container</a></li>
+        <li><a href="jquery.html">jquery</a></li>
+        <li><a href="jquery-amd.html">jquery-amd</a></li>
+        <li><a href="moment.html">moment</a></li>
+        <li><a href="positions.html">positions</a></li>
+        <li><a href="trigger.html">trigger</a></li>
+        <li><a href="weeknumbers.html">weeknumbers</a></li>
+        <div style="clear:both"></div>
+    </ul>
+   
+</div>
+<script src="js/pikaday.js"></script> 
+<script>
+
+    var picker = new Pikaday(
+    {
+        field: document.getElementById('datepicker'),
+        firstDay: 1,
+        minDate: new Date('2000-01-01'),
+        maxDate: new Date('2020-12-31'),
+        yearRange: [2000,2020]
+    });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<title>微品金融-大富翁体验金</title>
+<link rel="stylesheet" href="css/layout1.css"/>
+
+</head>
+
+<body>
+    <div class="pop-up-bg bind-bg">
+        <!--绑卡成功-->
+        <div class="pop-up-box bind-right">
+            <span class="act-close-ico"></span>
+            <a class="app-load-btn" href="http://a.app.qq.com/o/simple.jsp?pkgname=cn.vpfinance.android"></a>
+        </div>
+    </div>
+
+
+	<!-- 提现银行卡信息 -->
+	<div class="bind-card">
+        <div class="bind-title"></div>
+        <div class="bind-form">
+            <form>
+                <div class="input-item">
+                    <span class="user-icon"></span>
+                    <input id="username" type="text" name="username" maxlength="16" placeholder="请输入您的真实姓名"/>
+                </div>
+                <div class="input-item">
+                    <span class="user-id-icon"></span>
+                    <input id="userid" type="text" name="userid" maxlength="18" placeholder="请输入身份证ID"/>
+                </div>
+                <div class="input-item">
+                    <span class="bank-icon"></span>
+                    <input id="bank" type="text" name="bank" placeholder="选择银行"/>
+                </div>
+                <div id="bank-list">
+                    <ul>
+                        <li><i id="bk-zhaoshang"></i>招商银行</li>
+                        <li><i id="bk-gongshang"></i>工商银行</li>
+                        <li><i id="bk-nongye"></i>农业银行</li>
+                        <li><i id="bk-jianshe"></i>建设银行</li>
+                        <li><i id="bk-jiaotong"></i>交通银行</li>
+                        <li><i id="bk-zhongxin"></i>中信银行</li>
+                        <li><i id="bk-huaxia"></i>华夏银行</li>
+                        <li><i id="bk-youzheng"></i>邮政银行</li>
+                        <li><i id="bk-guangfa"></i>广发银行</li>
+                        <li><i id="bk-pingan"></i>平安银行</li>
+                        <li><i id="bk-pufa"></i>浦发银行</li>
+                        <li><i id="bk-guangda"></i>光大银行</li>
+                        <li><i id="bk-szfazhan"></i>深圳发展银行</li>
+                        <li><i id="bk-xinyongshe"></i>农村信用社</li>
+                        <li><i id="bk-beijing"></i>北京</li>
+                        <li><i id="bk-xingye"></i>兴业银行</li>
+                        <li><i id="bk-dongya"></i>东亚银行</li>
+                        <li><i id="bk-zhada"></i>渣打银行</li>
+                        <li><i id="bk-zhongguo"></i>中国银行</li>
+                        <li><i id="bk-mingsheng"></i>民生银行</li>
+                        <li><i id="bk-guangshang"></i>广东商业银行</li>
+                    </ul>
+                </div>
+                <div class="input-item">
+                    <span class="address-icon"></span>
+                    <input id="bank-address" type="text" name="bank-address" maxlength="16" placeholder="开户区域"/>
+                </div>
+                <div id="address-list">
+                    <div class="select-address clearfix">
+                        <span id="province-name">省份</span>
+                        <span id="city-name"class="select-state">市区</span>
+                    </div>
+                    <div class="address-name clearfix">
+                        <ul class="province clearfix">
+                            <li>北京</li>
+                            <li>上海</li>
+                            <li>天津</li>
+                            <li>广东</li>
+                            <li>河北</li>
+                            <li>河南</li>
+                        </ul>
+                        <ul class="city clearfix">
+                            <li>朝阳区</li>
+                            <li>海淀区</li>
+                            <li>朝阳区</li>
+                            <li>丰台区</li>
+                            <li>石景山区</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="input-item">
+                    <span class="sub-branch-icon"></span>
+                    <input id="sub-branch" type="text" name="sub-branch" maxlength="16" placeholder="开户支行"/>
+                </div>
+                <div class="input-item">
+                    <span class="card-icon"></span>
+                    <input id="card" type="text" name="cardId" minlength="15" placeholder="请填写您的银行卡号"/>
+                </div>
+                <div class="cash-tip">
+                    <span>注意：绑定的需是本人开户的银行卡</span>
+                </div>
+                <div class="input-item">
+                    <input id="auth" class="bank-auth" type="text" name="auth" placeholder="请输入验证码"/>
+                    <a id="code-img" onclick="">获取验证码</a>
+                </div>
+                <div class="tip"></div>
+                <div class="submit-btn"></div>
+            </form>
+        </div>
+    </div>
+    <!-- 体验金介绍 -->
+    <div class="act-try-cost">
+        <div class="now-invest"></div>
+    </div>
+	<script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+	<script>
+        //立即投资
+        $('.now-invest').click(function(){
+            $('.act-try-cost').hide();
+        })
+        //关闭按钮
+        $('.act-close-ico').click(function(){
+            $('.pop-up-bg').hide();
+            $('.bind-right').hide();
+        })
+
+        //关闭活动规则
+        $('.submit-btn').click(function(){
+
+            //校验
+
+            var username = $('#username').val();
+            var userid = $('#userid').val();
+            var bank = $('#bank').val();
+            var bankadd = $('#bank-address').val();
+            var subbranch = $('#sub-branch').val();
+            var card = $('#card').val();
+            var auth = $('#auth').val();
+
+            if(username == "" || username.length < 2){
+                $('.tip').html("请输入用户名");
+                $('#username').focus();
+                return false;
+            }
+            if(userid.length != 18){
+                $('.tip').html("身份证号码不正确");
+                $('#userid').focus();
+                return false;
+            }
+            if(bank == ""){
+                $('.tip').html("请选择银行");
+                $('#bank').focus();
+                return false;
+            }
+            if(bankadd.length == ""){
+                $('.tip').html("请选择银行地址");
+                $('#bank-address').focus();
+                return false;
+            }
+            if(subbranch == "" || subbranch.length < 2){
+                $('.tip').html("请输入所属支行");
+                $('#sub-branch').focus();
+                return false;
+            }
+            if(card.length < 15 ){
+                $('.tip').html("请输入正确的银行卡号");
+                $('#card').focus();
+                return false;
+            }
+            if(auth == "" || subbranch.length < 2){
+                $('.tip').html("请输入所属支行");
+                $('#auth').focus();
+                return false;
+            }
+            //验证完成操作
+            $('.pop-up-bg').show();
+            $('.bind-right').show();
+
+        })
+
+        //银行选择
+        $('input#bank').focus(function(){
+            $('#bank-list').show();
+            $('#address-list').hide();
+        });
+        $('#bank-list ul li').click(function(){
+            $('#bank-list').hide();
+            var bankname= $(this).text();
+            //alert(bankname)
+            $('#bank').val(bankname);
+        })
+
+        //区域选择
+        var province;
+        $('#bank-address').click(function(){
+            $('#address-list').show();
+            $('#province-name').removeClass('select-state');
+            $('#city-name').addClass('select-state');
+            $('.province').show();
+            $('.city').hide();
+            $('#bank-list').hide();
+        })
+        $('.province li').click(function(){
+            $(this).parent('.province').hide();
+            $('.city').show();
+            province = $(this).text();
+            $('#province-name').val(province).addClass('select-state');
+            $('#city-name').removeClass('select-state');
+        })
+        $('#province-name').click(function(){
+            $('.province').show();
+            $('.city').hide();
+            $(this).val("省份").removeClass('select-state');
+            $('#city-name').addClass('select-state');
+        })
+        $('.city li').click(function(){
+            $('#address-list').hide();
+            var city = $(this).text();
+            $('#bank-address').val(province + " " + city);
+        })
+
+        $('#sub-branch, #card').click(function(){
+            $('#bank-list').hide();
+            $('#address-list').hide();
+        })
+	</script>
+</body>
+</html>

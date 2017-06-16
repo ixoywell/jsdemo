@@ -1,0 +1,31 @@
+*{margin:0;}
+body{background:#c6dbbd  url(../images/bg.gif) repeat-x  fixed ;margin:10px 0;text-align:center;font:12px/140% "ËÎÌå", "ÐÂËÎÌå", Arial;color:#6A9446;}
+a{margin:0 3px;text-decoration:none;color:#63A25A;}
+a:hover{color:red;}
+.center{text-align:center;}
+#wrapper{border:3px solid #fff ;margin:0 auto;width:762px;text-align:left;}
+h1{border:2px solid #f8f8f8 ;background:url(../images/header.jpg) no-repeat ;text-align:center;margin:0 3px;border-bottom:0;height:144px;text-indent:-9999px;}
+h2{border:1px solid #b3cf6b ;background:#fdfdf2 ;text-align:center;border-bottom:none;font-size:14px;width:30%;line-height:25px;margin:0 0 0 40px;color:#638A42;}
+.content{border:1px solid #eee ;background:#fff ;margin:0 20px 10px 20px;padding:0 20px 15px 20px;}
+p{border:1px solid #ddd ;background:#fff ;margin:10px 20px 10px 20px;text-indent:0px;padding:5px 5px 5px 30px;}
+table{border:0px ;border-collapse:collapse;}
+td{border:1px solid #ddd ;padding:3px 5px;}
+dt{font-weight:bold;PADDING-BOTTOM: 10px;}
+dl{margin:10px;clear:both;padding: 10px 0 10px 0; }
+dd{margin-left:24px;}
+.row:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+.row{margin:13px 10px!important;margin:10px;display:block;}
+* html .row{height:1%;}
+.row dt{float:left;width:40%;clear:left;}
+.row dd{float:right;width:59%;margin:0;clear:right;}
+.rightError{text-align:right;color:#f00;}
+.onerow:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+.onerow{margin:13px 10px;display:block;width:99%;}
+.onerow dt{float:left;clear:left;}
+.onerow dd{float:left;margin:0;clear:right;}
+textarea{width:80%;height:60px;}
+#footer{background:#c6dbbd url(../images/footer.gif) no-repeat top center ;margin:10px 0 0 0;border:0;text-align:center;}
+#processbar{border:0px ;background:none ;padding-top:7px;padding-bottom:10px;}
+#processbar td{border:none;padding:0;font-size:1px;text-align:left;}
+#processbar table{border:1px solid #FFF;margin:0 auto;}
+.pbar{background:#90B833 ;height:100%;margin:1px;display:block;line-height:5px;}

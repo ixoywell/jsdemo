@@ -1,0 +1,107 @@
+﻿/*回款日历*/
+.calendarTop{ font-size:16px; text-align:center; height:12px; border-bottom:1px solid #e2e2e2;}
+.calendarTop p{ display:inline-block; *display:inline; margin:0 auto; padding:0 10px; background:#fdfdfd;}
+.calendarTop span{font-family:'宋体'; font-size:12px; color:#b4b4b4;}
+
+#calendar{margin:30px auto;width:640px; position:relative;  }
+.fc {direction: ltr;text-align: left;}
+.fc-header td{white-space:nowrap;}
+.fc td,.fc th{padding:0;vertical-align:top;}
+.fc-header-left{width:100%;text-align:center;}
+.fc-button{position:relative;display:inline-block;cursor:pointer;}
+.fc-header .fc-button{vertical-align:top;}
+.fc-corner-left{margin-left:1px;}
+.fc-state-default,.fc-state-default .fc-button-inner{color:#0053aa;}
+.fc-header .fc-corner-right{margin-right:1px;}
+.fc-button-inner{position:relative;float:left;overflow:hidden;}
+.fc-corner-left .fc-button-inner,.fc-corner-left .fc-event-inner{margin-left:-1px;}
+.fc-corner-right .fc-button-inner,.fc-corner-right .fc-event-inner{margin-right:-1px;}
+.fc-button-content{position:relative;float:left;padding:0 .6em;height:1.9em;white-space:nowrap;line-height:1.9em;}
+.fc-header-center{text-align:center;}
+.fc-header-title{display:inline-block;padding:2px 0 0;vertical-align:top; }
+.fc-header-title h2{display:inline-block;margin:0 auto;width:68px;height:18px;color:#404040;white-space:nowrap;font-size:14px; font-weight:bold;font-size:12px;line-height:18px;}
+.fc-header-right{width:100%;text-align:center;}
+/*.fc-content{clear:both;}*/
+.fc-view{overflow:hidden;width:100%;}
+table.fc-border-separate{border-collapse:separate;}
+.fc-border-separate tr.fc-last th,.fc-border-separate tr.fc-last td{border-bottom-width:1px;}
+.fc-grid th{text-align:center;}
+.disong_hover .di_icon, .disong_hover .song_icon, .tour_intro .tNotes, .tour_intro .nHome, .select_date .s_date, .select_adult .s_anum, .select_child .s_cnum, .update_project .update_name b, .update_project.update_project_hover .update_name b, .manager_rec .mRec_title {
+    background: url("../images/20x500.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.fc-widget-header{padding:3px 0!important; width:90px; height:35px; font-weight:bold; color:#ffffff; background:#ff846b;}
+.fc td,.fc th{padding:0;vertical-align:top;}
+.fc-border-separate th.fc-last,.fc-border-separate td.fc-last{border-right-width:1px;}
+.fc-border-separate tbody tr.fc-first td,.fc-border-separate tbody tr.fc-first th{border-top-width:0;}
+.fc-border-separate td:hover{background-color:#fef8f1;}
+.fc-border-separate td{height:35px;}
+.fc-day-number{padding:0 2px; color:#7c7c7c; position:relative;  }
+.fc-grid .fc-other-month .fc-day-number{opacity:.3;filter:alpha(opacity=30);}
+.fc-grid .fc-day-content{clear:both;padding:2px 2px 1px;}
+.fc-border-separate th.fc-last,.fc-border-separate td.fc-last{border-right-width:1px;}
+address,caption,cite,code,dfn,em,strong,th,var,optgroup{font-weight:400;font-style:normal;}
+.fc-border-separate th,.fc-border-separate td{border-width:1px 0 0 1px; text-align:center;}
+.fc-widget-content{border:1px solid #e3edef; border-right:none; line-height:35px;}
+.fc-widget-header{ border-top:none;}
+.fc-today .fc-day-number{color:#f60;opacity:1!important;filter:alpha(opacity=100)!important;}
+.icon_jian{float:right;display:block;width:12px;height:12px;background:url(../images/20x500.png) 0 -1881px no-repeat;color:#fff;text-align:left;text-indent:-20000em;font-size:12px;font-family:'\5B8B\4F53';}
+.price_span{color:#f60;font-size:12px;}
+.fc-event-time,.fc-event-title{padding:0 1px;}
+a.fc-event{text-decoration:none;}
+a.fc-event,.fc-event-draggable{cursor:pointer;}
+#popup_info{position:absolute;display:block;padding:10px;width:270px;height:auto;border:1px solid #ffdd67;background-color:#fffce5;line-height:1.7;word-break:break-all;}
+.f_f60{color:#f60;}
+.mb_10{margin-bottom:10px;}
+.order_wrap{width:320px;}
+.Pop_order_wrap{display:none;}
+.order_wrap .order_box{padding:5px 5px 10px;border:1px solid #e3edef;background-color:#fff;box-shadow:0 2px 2px #ccc; height:110px;}
+.clearfix:after{clear:both;display:block;visibility:hidden;height:0;content:".";}
+.select_date{position: relative; width:auto; z-index:2;}
+.select_date .s_date{position:relative;margin:0 0 -1px;padding:0 10px;width:285px;height:26px;border:1px solid #ccc;background-color:#fff;background-position:280px -338px;line-height:26px;cursor:pointer;}
+.select_date .s_datenodown{background:0;}
+.select_date .s_date .s_con{overflow:hidden;width:275px;height:26px;}
+.select_date .s_list{position:absolute;top:27px;left:0;display:none;overflow-x:hidden;overflow-y:auto;width:305px;max-height:158px;border:1px solid #ccc;background-color:#fff;_height:158px;}
+.select_date .s_list li{width:285px;height:26px;line-height:26px;padding:0 10px;-moz-padding-end:20px!important;overflow:hidden;text-overf .select_adult_child{padding:0 0 10px;height:28px;line-height:28px;}
+white-space:nowrap;cursor:pointer;low:ellipsis;}
+.select_adult{position:relative;z-index:1;float:left;margin:0 10px 0 0;width:auto;height:28px;line-height:28px;}
+.select_adult .s_anum{position:relative;float:left;margin:0 5px -1px 0;padding:0 10px;width:30px;height:26px;border:1px solid #ccc;background-color:#fff;background-position:28px -338px;line-height:26px;cursor:pointer;}
+.select_adult .s_anum .s_acon{overflow:hidden;width:20px;height:26px;}
+.fl{float:left;}
+.select_adult .s_alist{position:absolute;top:27px;left:0;display:none;overflow-x:hidden;overflow-y:auto;width:50px;height:158px;border:1px solid #ccc;background-color:#fff;}
+.select_adult .s_alist_hover {display: block;}
+.select_adult .s_alist li{overflow:hidden;padding:0 10px;width:30px;height:26px;text-overflow:ellipsis;white-space:nowrap;line-height:26px;cursor:pointer;-moz-padding-end:20px!important;}
+.select_adult .s_alist li:hover {background-color: #D9EEFF;}
+.select_child{position:relative;z-index:1;float:left;margin:0 10px 0 0;width:auto;height:28px;line-height:28px;}
+.select_child .s_cnum{position:relative;float:left;margin:0 5px -1px 0;padding:0 10px;width:30px;height:26px;border:1px solid #ccc;background-color:#fff;background-position:28px -338px;line-height:26px;cursor:pointer;}
+.select_child .s_cnum .s_ccon{overflow:hidden;width:20px;height:26px;}
+.select_child .s_clist{position:absolute;top:27px;left:0;display:none;overflow-x:hidden;overflow-y:auto;width:50px;height:158px;border:1px solid #ccc;background-color:#fff;}
+.select_child .s_clist li{overflow:hidden;padding:0 10px;width:30px;height:26px;text-overflow:ellipsis;white-space:nowrap;line-height:26px;cursor:pointer;-moz-padding-end:20px!important;}
+.select_child .s_clist li:hover {background-color: #D9EEFF;}
+.select_child .s_clist_hover {display: block;}.order_btn,.store_btn{float:left;display:block;margin:0 12px 0 0;height:35px;border:0 none;color:#fff;font-weight:700;font-size:14px;line-height:35px;cursor:pointer;}
+.order_btn{display:inline-block;width:143px;background-position:0 -786px;text-align:center;}
+.dm, .dj, .ds, .order_btn, .store_btn, .date_list .tour_date_list .tdl_title, .print_tour, .date_list .tour_date_list .error_recovery, .d_des {
+    background-image: url("../images/pro_icon.png");
+}
+.select_adult_child {height: 28px;line-height: 28px;padding: 0 0 10px;}
+#PeopleBook{ display:none;}
+.fc-day-price{ color:#fe1a46; text-align:right; margin-right:3px;}
+.fc-day-price span{  font-family:'微软雅黑';font-size:16px;}
+.prev-date .fc-day-number{ color:#a1d2fd;}
+.next-date{ cursor:pointer;}
+.todayCss{color:#FF6600;} 
+.fc-day-h{ min-height:35px;}
+.cur-date{ cursor:pointer;}
+.cur-date > .fc-day-h{ border:3px solid #ff8e1b; width:84px; height:35px;}
+.fc-header-div{ float:left; width:120px; }
+.fc-content{ float:left; width:640px; border:1px solid #ff846b; }
+.cur-date .fc-day-number{ margin:0px 5px 0px 2px; }
+.fc-header{ width:100%;}
+.fc-header{ }
+.fc-header-left{ position:absolute; top:100px; left:-30px;  z-index:999; }
+.fc-header-title{ position:absolute; top:45%;left:0px; width:120px; }
+.fc-header-right{ position:absolute; top:100px;right:-30px;z-index:999; }
+.holiday{ margin-left:3px; }
+
+.fc-header-left{  width:16px; height:31px; display:block;background:url(icon.png) no-repeat 0px -585px;cursor:pointer;}
+.fc-header-right{ width:16px; height:31px; display:block;background:url(icon.png) no-repeat 0px -550px; cursor:pointer; }
+.fc-day-number .hk{ color:#ffffff; font-family:'宋体'; font-size:12px;background:url(hk.png) no-repeat; width:32px; height:32px; text-align:center; line-height:30px; display:block; position:absolute; right:0px; top:3px;}

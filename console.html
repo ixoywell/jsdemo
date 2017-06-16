@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>console</title>
+</head>
+
+<body>
+
+   <div class="mod_container">
+
+    打开控制台
+    
+  </div>
+
+  <script>
+
+    // console内容  
+    var consoleConfig = {
+        // 招聘信息，统一输出
+        staff: "%c凹凸实验室是一个年轻基情(～￣▽￣)～的技术团队。\n加入凹凸，陪我走过春夏秋冬。\n躺在邮箱里等你哟(*/ω＼*)： %caotu{AT}jd.com\n%c人家还是有条件滴：%c http://aotu.io/join/ \n%c爱你哟~%c❤\n\n",
+        // 页面用到的技术，可为空
+        freshTec: "我们使用了webp/iconfont/svg，你关注了吗~",
+        // 趣味体验，是指一些小彩蛋，有的话就给展示如何激活。可为空
+        funExp: "试试搜索 儿童节快乐 ,有彩蛋哟~~🎉🎉🎉",
+        // 凹凸推广，可自定义
+        o2Market: "欢迎访问 http://aotu.io/ ，围观凹凸帅哥妹子的文章啦！\n微信公众号：凹凸实验室，每周五推送精选技术文章！\n"
+    };
+
+    // 定义console样式
+    var consoleInfo = (function(consoleConfig){
+
+        // o2logo
+        console.log("%c    ","background: url(http://aotu.io/assets/img/o2logo.png) no-repeat left center;font-size: 60px;","\n");
+        
+        // 招聘信息
+        console.log(consoleConfig.staff,"color: #6190e8;","padding: 0 5px;color: #fff;background: #6190e8;","color: #6190e8;","color: #6190e8;text-decoration: underline;","color: #6190e8;text-decoration: none;","color: #f00");
+
+        // 新技术点
+        if(consoleConfig.freshTec !== "" ){
+            console.log("%c"+consoleConfig.freshTec,"color: #6190e8","\n\n");            
+        }
+        
+        // 趣味体验
+        if(consoleConfig.funExp !== "" ){
+            console.log("%c"+consoleConfig.funExp,"color: #6190e8;","\n\n");
+        }
+
+        // 凹凸推广
+        if(consoleConfig.o2Market !== "" ){
+            console.log("%c"+consoleConfig.o2Market+"\n%c    ","color: #6190e8;","background: url(http://storage.360buyimg.com/mtd/home/o2qrcode1464836145980.jpg) no-repeat left center;font-size: 100px;","\n\n");
+        }   
+        	
+console.log("%c\n                                           :J:    \n                                          :. i    \n                  ..:::::::,:.,.,..:..::rr    J   \n               ::i:,               FB         ,v  \n  .i:i:   .:::7                     B.         :7 \n  7:  ,rri:  @B      .vOB@B@B@BY                ,:\n  Y          1       B@B@BkB@Pr        7,        :\n ::                                  ,7:.:      .i\n.i          .                      :7: .r.::i:::: \nr         i .7:,               .:ri:  ;i          \n7        77;.  .iii:::::::::iii:.    7,           \n :i:.,::;.  :r,      .....         i7             \n   .. .       :ii.               .v:              \n                .ii:.          .rr                \n                   .iii.      ii.                 \n                        i@8GB@                    \n                        vj1ULri                   \n                       7.     r.                  \n                  .,  ,r      ,;                  \n                  .E  0   %cJD   %c7                  \n                   jii2        u                  \n                    1i,   ::i. J                  \n                    i J  E   L v                  \n                   ,:iY 17   ::7                  \n                   iL ,iL7    rr                  \n                   Si r::5    i7                  \n                   ,  r       .v                  ","color: #000","color: #f00","color: #000")
+    }(consoleConfig));
+
+  </script>
+
+</body>
+
+</html>

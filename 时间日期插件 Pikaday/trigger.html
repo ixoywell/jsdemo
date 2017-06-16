@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<title>Pikaday - custom trigger element example</title>
+<link rel="stylesheet" href="css/pikaday.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<label for="datepicker">Date:</label>
+<br>
+<input type="text" disabled id="datepicker">
+<br>
+<button id="datepicker-button">Choose Date</button>
+<script src="js/pikaday.js"></script> 
+<script>
+
+    new Pikaday(
+    {
+        field: document.getElementById('datepicker'),
+        trigger: document.getElementById('datepicker-button'),
+        minDate: new Date('2000-01-01'),
+        maxDate: new Date('2020-12-31'),
+        yearRange: [2010,2020]
+    });
+
+    </script>
+</body>
+</html>

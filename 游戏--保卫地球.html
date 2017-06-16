@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)http://denghao.me/demo/2015/protectEarth.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>游戏--保卫地球</title>
+<style>
+html {margin:0; padding:0;}
+body {margin:0; padding:0; font-family:"Microsoft YaHei"; font-size:12px; color:#333;}
+img{vertical-align:top;border:0; display:block;}
+
+.main{width:100%; max-width:640px; height:800px; margin:0 auto; overflow: hidden ; position:relative; border:1px dashed blue;}
+#tar{position: absolute; top:40%; left:45%; width:100px; height:100px; border-radius:100px; background:green;}
+.killer{position:absolute; top:0; left: 0;width:50px; height:50px; border-radius:50px;  background: black;}
+</style>
+</head>
+<body>
+<div class="main">
+	<h1>保卫地球</h1>
+	<h3>规则: 点击黑色星球,使其改变航向,保卫地球。</h3>
+	<h3><a href="http://denghao.me/" target="_blank">邓浩</a> 2015.9.10</h3>
+	<div id="tar"></div>
+	<!-- 初始化，隐藏 -->
+	<div id="killer1" class="killer" style="display: none; top: 46px; left: 42.0216px;"></div>
+<div class="killer" style="position: absolute; top: 653px; left: 1293.14px;"></div><div class="killer" style="position: absolute; top: -96px; left: -199.939px;"></div><div class="killer" style="position: absolute; top: 394px; left: 171.875px;"></div><div class="killer" style="position: absolute; top: -157px; left: -1754.59px;"></div><div class="killer" style="position: absolute; top: 715px; left: 1513.17px;"></div><div class="killer" style="position: absolute; top: 75px; left: -408.719px;"></div><div class="killer" style="position: absolute; top: 451px; left: 231.688px;"></div><div class="killer" style="position: absolute; top: 112px; left: 19893.8px;"></div><div class="killer" style="position: absolute; top: 480px; left: 251.242px;"></div><div class="killer" style="position: absolute; top: -200px; left: 1077.25px;"></div><div class="killer" style="position: absolute; top: 658px; left: -1574.52px;"></div><div class="killer" style="position: absolute; top: 48px; left: -28.9541px;"></div><div class="killer" style="position: absolute; top: 593px; left: 770.063px;"></div><div class="killer" style="position: absolute; top: -2px; left: -34.7947px;"></div><div class="killer" style="position: absolute; top: 580px; left: -173.875px;"></div><div class="killer" style="position: absolute; top: 18px; left: 5755.58px;"></div><div class="killer" style="position: absolute; top: 655px; left: 12.9219px;"></div><div class="killer" style="position: absolute; top: -204px; left: 1266.09px;"></div><div class="killer" style="position: absolute; top: 479px; left: 131.922px;"></div><div class="killer" style="position:absolute; top:777px; left:745px;"></div></div>
+   
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script>
+$(function(){
+	var main=$(".main");
+	var tarL=$("#tar").position().left+$("#tar").width()/2;
+	var tarT=$("#tar").position().top+$("#tar").width()/2;
+	var killerHalfW=$("#killer1").width()/2;
+	var safeDistance=$("#tar").width()/2+$(".killer").width()/2;
+	var arrKillerT=new Array();
+	var arrKillerL=new Array();
+	var arrMoveT=new Array();
+	var arrMoveL=new Array();
+	var arrDirect=new Array();
+	var arrDistance=new Array();
+	var num=20;
+	var speed=20;
+
+	creat(); //生成
+	var gameTimer=setInterval(calculate,speed);
+
+	arrKiller.click(function(event) {
+		var index=arrKiller.index($(this));
+		arrDirect[index]=-1;
+		//$(this).remove();
+	});
+
+	function creat(){
+	for (var i = 0; i < num; i++) {
+		if(i%2==0){
+			var rndX=Math.round(rndNum(0,-500));
+		}else{
+			var rndX=Math.round(rndNum(640,1000));
+		}
+		var rndY=Math.round(rndNum(0,1000));
+		var newKiller="<div class='killer' style='position:absolute; top:"+rndY+"px; left:"+rndX+"px;'></div>"
+		main.append(newKiller);
+		arrMoveL[i]=rndX;
+		arrDirect[i]=1;
+		};
+	arrKiller=$(".killer");
+	};
+
+	function calculate() {
+		for (i = 0; i < num; i++) {
+			arrKillerT[i] = arrKiller.eq(i).position().top;
+			arrKillerL[i] = arrKiller.eq(i).position().left;
+			var direct = arrMoveL[i] > tarT ? -1 : 1;
+			arrMoveL[i] = arrMoveL[i] + (direct*arrDirect[i]);
+			arrMoveT[i] = lineTo(arrMoveL[i], tarL, tarT, arrKillerL[i], arrKillerT[i]);
+			moveIn(arrKiller.eq(i), arrMoveL[i],arrMoveT[i]);
+			arrDistance[i] = getDistance(arrKillerL[i], arrKillerT[i],tarL-killerHalfW, tarT-killerHalfW);
+			if (arrDistance[i] <= safeDistance) {
+				gameOver();
+			}
+		}
+	}
+
+	function moveIn(tar,t,l){
+		tar.css({
+			top: t,
+			left: l
+		});
+	};
+
+	function gameOver(){
+		window.clearInterval(gameTimer);
+		$("#tar").css('background-color', 'red');
+alert("地球毁灭了!");
+		window.location.reload();
+	}
+
+	// 直线方程
+	function lineTo(y,x1,y1,x2,y2){
+		return (((x2-x1)*(y-y1))/(y2-y1))+x1;
+	}
+	// 两点距离公式
+	function getDistance(x1,x2,y1,y2){
+		return Math.sqrt(((x1-y1)*(x1-y1)+(x2-y2)*(x2-y2)));
+	}
+
+	// 随机数
+	function rndNum(Min, Max) {
+		var Range = Max - Min;
+		var Rand = Math.random();
+		return (Min + Math.round(Rand * Range));
+	}
+
+})
+</script>
+
+</body></html>

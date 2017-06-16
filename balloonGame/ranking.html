@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<title>微品金融-领取礼包</title>
+<link rel="stylesheet" href="css/layout1.css"/>
+</head>
+<body>
+    <div class="pop-up-bg">
+        <!--绑卡成功-->
+        <div class="pop-up-box bind-right">
+            <span class="act-close-ico"></span>
+            <a class="app-load-btn" href="http://a.app.qq.com/o/simple.jsp?pkgname=cn.vpfinance.android"></a>
+        </div>
+    </div>
+
+	<!-- 排行榜展示 -->
+	<div class="ranking-show">
+        <div class="ranking-head"></div>
+        <div class="ranking-info">
+            <div class="ranking-info-tip">当前排名，只显示前10名</div>
+            <ul>
+                <li class="my-ranking-info">
+                    <div class="ranking-num"></div>
+                    <div class="avator">
+                        <img src="img/avator.png">
+                    </div>
+                    <div class="player-name">王小二</div>
+                    <div class="ranking-score">0999分</div>
+                </li>
+                <li>
+                    <div class="ranking-num"></div>
+                    <div class="avator">
+                        <img src="img/avator.png">
+                    </div>
+                    <div class="player-name">王小三</div>
+                    <div class="ranking-score">0999分</div>
+                </li>
+                <li class="my-ranking-info">
+                    <div class="ranking-num"></div>
+                    <div class="avator">
+                        <img src="img/avator.png">
+                    </div>
+                    <div class="player-name">王小二</div>
+                    <div class="ranking-score">0999分</div>
+                </li>
+                <li>
+                    <div class="ranking-num"></div>
+                    <div class="avator">
+                        <img src="img/avator.png">
+                    </div>
+                    <div class="player-name">王小三</div>
+                    <div class="ranking-score">0999分</div>
+                </li>
+                <li class="my-ranking-info">
+                    <div class="ranking-num">4</div>
+                    <div class="avator">
+                        <img src="img/avator.png">
+                    </div>
+                    <div class="player-name">王小二</div>
+                    <div class="ranking-score">0999分</div>
+                </li>
+                <li>
+                    <div class="ranking-num">5</div>
+                    <div class="avator">
+                        <img src="img/avator.png">
+                    </div>
+                    <div class="player-name">王小三</div>
+                    <div class="ranking-score">0999分</div>
+                </li>
+                <li class="my-ranking-info">
+                    <div class="ranking-num">6</div>
+                    <div class="avator">
+                        <img src="img/avator.png">
+                    </div>
+                    <div class="player-name">王小二</div>
+                    <div class="ranking-score">0999分</div>
+                </li>
+                <li>
+                    <div class="ranking-num">7</div>
+                    <div class="avator">
+                        <img src="img/avator.png">
+                    </div>
+                    <div class="player-name">王小三</div>
+                    <div class="ranking-score">0999分</div>
+                </li>
+            </ul>
+        </div>
+        <div class="ranking-gifts"></div>
+        <p class="ranking-details">
+            活动结束3个工作日后将在公众号宣布获奖名单，<br>
+            7个工作日联系不上视为放弃活动奖品。<br>
+            图片仅供参考，以实物为准。
+        </p>
+        <div class="look-prize-btn"></div>
+    </div>
+	<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+	<script>
+        $(function(){
+
+        });
+
+        //立即投资
+        $('.now-invest').click(function(){
+            $('.act-try-cost').hide();
+        })
+        //关闭按钮
+        $('.act-close-ico').click(function(){
+            $('.pop-up-bg').hide();
+            $('.bind-right').hide();
+        })
+
+	</script>
+</body>
+</html>

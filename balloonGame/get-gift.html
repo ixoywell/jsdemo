@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<title>微品金融-领取礼包</title>
+<link rel="stylesheet" href="css/layout1.css"/>
+<link rel="stylesheet" href="css/jquery.flipster.css"/>
+</head>
+
+<body>
+    <div class="pop-up-bg">
+        <!-- 流量包  -->
+        <div class="pop-up-box show-ranking show-ranking-3">
+            <span class="close-ico"></span>
+            <ul>
+                <li>流量包使用说明流量包使用说明:</li>
+                <li>1、赠送流量48小时内到账，当月有效；</li>
+                <li>2、使用范围：流量为国内2G/3G/4G流量（不含台港澳），流量不区分省内、省外，不区分2G、3G、4G网络；</li>
+                <li>3、流量活动客服电话：400-808-3900；</li>
+                <li>4、本活动由微品金融发起，最终解释权归微品金融所有。</li>
+            </ul>
+        </div>
+        <!-- 免房券  -->
+        <div class="pop-up-box show-ranking show-ranking-5">
+            <span class="close-ico"></span>
+            <ul>
+                <li>免房券使用规则：</li>
+                <li>1、入住需提前一天预订，办理入住前出示本房券；</li>
+                <li>2、免房券有效期至2016年12月31日；</li>
+                <li>3、预定热线：021-5138666；</li>
+                <li>4、中兴和泰酒店（上海店）地址：上海市浦东张江高科科苑路866；</li>
+                <li>5、游戏结束后，客服将与获奖者联系，发送礼品；</li>
+                <li>免房券最终解释权归中兴和泰酒店（上海店）所有。</li>
+            </ul>
+        </div>
+        <!-- 购物卡  -->
+        <div class="pop-up-box show-ranking show-ranking-6">
+            <span class="close-ico"></span>
+            <ul>
+                <li>使用方法：</li>
+                <li>1.下载登陆中兴微品App—钱包—微卡—购物卡充值，输入购物卡卡号和密码即可激活本卡；（点击<a href="http://wap.vpclub.cn/vpclub/updateApp.html">中兴微品App下载</a>）</li>
+                <li>2.每次订单可以使用多张微品卡，微品卡支付部分不开发票；</li>
+                <li>3.发生退货，微品卡支付部分退回卡内，不予兑现；</li>
+                <li>4.本卡有限期到2016年12月31日；</li>
+                <li>5.本卡不记名、不挂失、不予兑现、请妥善保管本卡；</li>
+                <li>本卡最终解释权归深圳微品致远信息科技有限公司所有。</li>
+
+            </ul>
+        </div>
+    </div>
+
+	<!-- 礼包展示 -->
+	<div class="gift-show">
+        <div class="gift-head"></div>
+
+        <div class="gift-box Container clearfix">
+            <div class="gift-title">我的豪华大礼包</div>
+            <div class="flipster gift-main clearfix">
+                <ul class="flip-items clearfix" >
+                    <li id="Coverflow-1" content="体验金可用于投资微品金融产品，<br>7天投资期，12%年化收益<br>收益现金可提现" data-num="1" data-flip-category="体验金">
+                        <img src="img/gift1.png">
+                    </li>
+                    <li id="Coverflow-2" content="Surfing" data-num="2" data-flip-category="代金券">
+                        <img src="img/gift2.png">
+                    </li>
+                    <li id="Coverflow-3" content="Baseball" data-num="3" data-flip-category="流量包">
+                        <img src="img/gift3.png">
+                    </li>
+                    <li id="Coverflow-4" content="Running" data-num="4" data-flip-category="优惠券">
+                        <img src="img/gift4.png">
+                    </li>
+                    <li id="Coverflow-5" content="Air Kicking" data-num="5" data-flip-category="免房券">
+                        <img src="img/gift5.png">
+                    </li>
+                    <li id="Coverflow-6" content="Bike Sitting" data-num="6" data-flip-category="购物卡">
+                        <img src="img/gift6.png">
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul class="gift-details-btn">
+        </ul>
+        <a class="look-my-ranking" href="ranking.html">查看我的榜单</a>
+        <a class="vp-logo" href="http://www.vpfinance.cns"></a>
+    </div>
+    <!-- 体验金介绍 -->
+    <!--<div class="act-try-cost">-->
+        <!--<div class="now-invest"></div>-->
+    <!--</div>-->
+	<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery.flipster.js"></script>
+	<script>
+        $(function(){
+            $(".flipster").flipster({
+                itemContainer: 			'ul', // Container for the flippin' items.
+                itemSelector: 			'li', // Selector for children of itemContainer to flip
+                style:						'carousel', // Switch between 'coverflow' or 'carousel' display styles
+                start: 							0, // Starting item. Set to 0 to start at the first, 'center' to start in the middle or the index of the item you want to start with.
+                enableKeyboard: 		true, // Enable left/right arrow navigation
+                enableMousewheel: 	true, // Enable scrollwheel navigation (up = left, down = right)
+                enableTouch: 				true, // Enable swipe navigation for touch devices
+
+                enableNav: 					true,//false, // If true, flipster will insert an unordered list of the slides
+                enableNavButtons: 	true, // If true, flipster will insert Previous / Next buttons
+                onItemSwitch: 			function(){}, // Callback function when items are switches
+            });
+
+
+            $('.ranking-btn-1').html('<a href="http://www.vpfinance.cn/h5/user/account"></a>'); //体验金
+            $('.ranking-btn-2').html('<a href="act-try-cost.html"></a>'); //代金券
+            $('.ranking-btn-4').html('<a href="http://hotel.vpclub.cn/hetai/product/11424/57389.html"></a>'); //优惠券
+//
+            //流量包
+            $('.ranking-btn-3').click(function(){
+                $('.pop-up-bg').show();
+                $('.show-ranking-3').show();
+            });
+            //免房券
+            $('.ranking-btn-5').click(function(){
+                $('.pop-up-bg').show();
+                $('.show-ranking-5').show();
+            });
+            //购物卡
+            $('.ranking-btn-6').click(function(){
+                $('.pop-up-bg').show();
+                $('.show-ranking-6').show();
+            });
+        });
+
+        //关闭按钮
+        $('.close-ico').click(function(){
+            $('.pop-up-bg').hide();
+            $(this).parent('.pop-up-box').hide();
+        })
+
+	</script>
+</body>
+</html>

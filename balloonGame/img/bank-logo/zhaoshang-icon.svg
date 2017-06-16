@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title>Path 1957</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <ellipse id="path-1" cx="16" cy="16" rx="16" ry="16"></ellipse>
+    </defs>
+    <g id="切图" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Path-1957" sketch:type="MSLayerGroup">
+            <g>
+                <mask id="mask-2" sketch:name="Mask" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Mask" fill="#AF171C" sketch:type="MSShapeGroup" xlink:href="#path-1"></use>
+                <path d="M28.482592,20.9116279 L29.0625468,22.2933026 L25.561324,27.326328 L5.87506446,27.2506029 L2.67957828,22.2711807 L11.114845,1.35885496 L15.7695285,11.9912843 L20.3045266,1.42834055 L24.4217769,11.2372093 L32.1488372,11.2372093 L32.1488372,11.9813953 L24.7341473,11.9813953 L24.7341473,11.9813953 L25.0465177,12.7255814 L25.0465177,12.7255814 L32.1488372,12.7255814 L32.1488372,13.4697674 L25.3588881,13.4697674 L25.6712585,14.2139535 L32.1488372,14.2139535 L32.1488372,14.9581395 L25.9836289,14.9581395 L25.9836289,14.9581395 L26.2959993,15.7023256 L26.2959993,15.7023256 L32.1488372,15.7023256 L32.1488372,16.4465116 L26.6083697,16.4465116 L26.9207401,17.1906977 L32.1488372,17.1906977 L32.1488372,17.9348837 L27.2331104,17.9348837 L27.5454808,18.6790698 L27.5454808,18.6790698 L32.1488372,18.6790698 L32.1488372,19.4232558 L27.8578512,19.4232558 L28.1702216,20.1674419 L32.1488372,20.1674419 L32.1488372,20.9116279 L28.482592,20.9116279 Z M5.24090212,22.0491104 L23.4648621,22.0491104 L18.8827664,10.9376559 L14.2249632,21.654886 L9.77164604,10.8046406 L5.24090212,22.0491104 Z" fill="#FFFFFF" sketch:type="MSShapeGroup" mask="url(#mask-2)"></path>
+            </g>
+        </g>
+    </g>
+</svg>

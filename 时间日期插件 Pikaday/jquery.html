@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <title>Pikaday - jQuery example</title>
+    <link rel="stylesheet" href="css/pikaday.css">
+    <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<center><input type="text" id="datepicker"></center>
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="js/pikaday.js"></script>
+    <script src="js/pikaday.jquery.js"></script>
+    <script>
+    var $datepicker = $('#datepicker').pikaday({
+        firstDay: 1,
+        minDate: new Date('2000-01-01'),
+        maxDate: new Date('2020-12-31'),
+        yearRange: [2000,2020]
+    });
+    $datepicker.pikaday('show').pikaday('nextMonth');
+    </script>
+</body>
+</html>

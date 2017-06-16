@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<title>微品金融-大富翁</title>
+<link rel="stylesheet" href="css/layout1.css"/>
+
+</head>
+
+<body>
+	<div class="pop-up-bg">
+        <!--用户输入-->
+        <div class="pop-up-box user-input" >
+            <input type="text" id="phone" placeholder="请输入手机号码">
+            <input type="text" id="auth-code" placeholder="请输入验证码">
+            <div class="get-auth-code"></div>
+            <div class="play"></div>
+        </div>
+
+        <!-- 活动规则  -->
+        <div class="pop-up-box show-rule">
+            <span class="close-ico"></span>
+            <ul>
+                <h3>活动规则</h3>
+               <li>1、本活动适用于所有用户；</li>
+               <li>2、游戏可领取礼包，每个手机号码仅限领取一次；</li>
+               <li>3、游戏排名前3名，可获得实物礼物。一个手机号码只能参与一次排名，以最好记录入选。</li>
+               <li>4、获奖者，将于活动结束后3个工作日内在微品金融订阅号公布（ZTE-vpjr）；</li>
+               <li>5、转发活动链接可获得流量礼包，流量额度以短信为准；</li>
+               <li>6、活动时间：2016年3月12日-2016年3月15日；</li>
+               <li>7、客服热线：404-3900-808；</li>
+               <li>本活动最终解释权归微品金融所有。</li>
+            </ul>
+        </div>
+
+        <!--游戏成绩-->
+        <div class="pop-up-box game-result">
+            <div class="result-score">5216</div>
+            <div class="result-ranking">10</div>
+            <div class="result-percent">95</div>
+            <!--活动期展示-->
+            <div class="game-keep-status">
+                <div class="get-gift"></div>
+                <div class="play-again"></div>
+            </div>
+            <!--活动结束展示-->
+            <div class="game-over-status">
+                <div class="play-again"></div>
+                <div class="get-gift">领取礼品礼包</div>
+            </div>
+        </div>
+
+        <!--游戏排名-->
+        <div class="pop-up-box game-ranking">
+            <h3>提示</h3>
+            <span class="close-ico"></span>
+            <p class="tip"></p>
+        </div>
+
+        <!--分享-->
+        <div class="pop-up-box share">
+        </div>
+
+        <!--错误提示-->
+        <div class="pop-up-box error-tip">
+            <h3>提示</h3>
+            <span class="close-ico"></span>
+            <p class="tip"></p>
+        </div>
+
+        <!-- 错误提示 -->
+        <div class="pop-up-box default-show">
+            <h3>提示</h3>
+            <span class="close-ico"></span>
+            <p class="tip"></p>
+            <div id="startGame">开始游戏</div>
+        </div>
+	</div>
+
+    <!--查看结果-->
+    <div class="result">
+
+    </div>
+
+
+    <!--查看奖品-->
+    <div class="result">
+
+    </div>
+
+	<!-- 首页 -->
+	<div class="home">
+        <div class="act-rule-btn"></div>
+        <div class="animate">
+            <div class="left-ring"></div>
+            <div class="left-cloud"></div>
+            <div class="left-hot-balloon"></div>
+            <div class="left-wheel"></div>
+
+            <div class="right-ring"></div>
+            <div class="right-hot-balloon"></div>
+            <div class="right-wheel"></div>
+            <div class="right-cloud"></div>
+        </div>
+        <div class="start-game"></div>
+        <ul class="look-over">
+            <li class="look-award"></li>
+            <li class="look-ranking"></li>
+        </ul>
+        <ul class="brand">
+            <li><a href="http://www.funtel.com.cn/" >欢旅</a></li>
+            <li><a href="http://www.vpclub.cn/" >微品</a></li>
+            <li><a href="http://www.vpfinance.cn" >微品金融</a></li>
+            <li><a href="http://www.ztehotel.com" >中兴和泰</a></li>
+        </ul>
+	</div>
+
+	<!-- 游戏页面 -->
+	<div id="CanvasWrapper">
+		<div id="musicWrapper">
+			<audio id="bgmusic" src="audio/backmusic.mp3" loop="" preload="auto"></audio>
+			<audio preload="auto" id="musicbomb">
+				<source src="audio/bomb.mp3" type="audio/mpeg">
+			</audio>
+			<div class="music-button" id="musicBtn"></div>
+		</div>
+		<canvas id="GameCanvas">您的浏览器不支持HTML5 Canvas, 请使用Firefox,Chrome,IE9等浏览器</canvas>
+	</div>
+	<script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+	<script src="js/game-demo.js" type="text/javascript"></script>
+	<script>
+
+        //显示板弹出
+        $('.start-game').click(function(){
+            $('.home').hide();
+            $('.pop-up-bg').show();
+            $('.user-input').addClass("board-animate").show().siblings().hide();
+        })
+        //开始游戏
+       // start();
+        $('.play').click(function(){
+            var phone = $('#phone').val();
+            var auth = $('#auth-code').val();
+            /*
+            if (phone == "") {
+                alert('请输入手机号码参加抽奖');
+                return false;
+            }else if (!isTel(phone)) {
+                alert('请输入正确的手机号码');
+                return false;
+            }else if(auth == ""){
+                alert('请输入验证码参加抽奖');
+                return false;
+            }
+*/
+            $('.user-input').removeClass("board-animate").hide();
+            $('.pop-up-bg').hide();
+            // 开始游戏
+            musicbg.play();
+            start();
+
+        })
+          //显示活动规则
+        $('.act-rule-btn').click(function(){
+            $('.pop-up-bg').show();
+            $('.show-rule').show().siblings().hide();
+        })
+        //关闭活动规则
+        $('.show-rule .close-ico').click(function(){
+            $('.pop-up-bg').hide();
+            $('.show-rule').hide();
+        })
+
+		//bg-music control
+		var musicbg = document.getElementById('bgmusic');
+		$('#musicBtn').on('click',function(){
+			if(musicbg.paused) {
+				$(this).removeClass('closed');
+				musicbg.play();
+			}else {
+				$(this).addClass('closed');
+				musicbg.pause();
+			}
+		});
+
+        function isTel(tel){
+            var reg = /^0?1[3|4|5|7|8][0-9]\d{8}$/;
+            return reg.test(tel);
+        }
+
+        $(".play-again").click(function (){
+           /* for (var i = 0,len = balloonsObj.length; i < len; i++) {
+                if (balloonsObj[i].blood != 0) {
+                    balloonsObj[i].blood = 0;
+                };
+            };
+            */
+            $(".game-result").hide();
+            $(".pop-up-bg").hide();
+            grade = 0;
+            gameTime = 1000 * 10;
+            touchs.blood = 1;
+            countdown = 0;
+            balloonspeed = 20;
+            start();
+        });
+
+	</script>
+</body>
+</html>
